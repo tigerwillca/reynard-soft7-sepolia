@@ -1,12 +1,1 @@
-{
-  "name": "Reynard Soft7 #4 (Art 036)",
-  "description": "Seventh Gate / Reynard soft-launch card. Art slot 036. Sepolia testnet only.",
-  "image": "https://raw.githubusercontent.com/tigerwillca/reynard-soft7-sepolia/main/images/036.jpg",
-  "external_url": "https://github.com/tigerwillca/reynard-soft7-sepolia",
-  "attributes": [
-    {"trait_type": "Art Slot", "value": "036"},
-    {"trait_type": "Species", "value": "Fox / Reynard"},
-    {"trait_type": "Network", "value": "Sepolia"},
-    {"trait_type": "Drop", "value": "Soft7"}
-  ]
-}
+{"name":"Reynard Soft7 #4 (Art 036)","description":"Seventh Gate / Reynard soft-launch. Art slot 036. Sepolia testnet only.","image":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABcQERQRDhcUEhQaGBcbIjklIh8fIkYyNSk5UkhXVVFIUE5bZoNvW2F8Yk5QcptzfIeLkpSSWG2grJ+OqoOPko3/2wBDARgaGiIeIkMlJUONXlBejY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY3/wAARCABgAEADASIAAhEBAxEB/8QAGgAAAgMBAQAAAAAAAAAAAAAAAgUAAwQBBv/EACoQAAEEAQQABQQDAQAAAAAAAAEAAgMRIQQSMUEFE1FhcRQiIzJSkdEG/8QAFwEBAQEBAAAAAAAAAAAAAAAAAQACA//EABoRAQEBAQEBAQAAAAAAAAAAAAABESECMUH/2gAMAwEAAhEDEQA/AMtUFyJ4kZabiFv8R/STjWu00LgWxvduIp3IWGhFCxweCR0pH4lvpro4g4n9v4+9JhpovwguAJdZyAr4imRtlVvaAm8sLd9bR68LLIz78tFHGArUWkWULm4K3mCiC5opZ5nMB2tbuLv6SHodVJ9PopZCaLWHPv0vKwsl1Dxhz65Tj/opntijiA/G+yc8kdJPoXvErvv2mrVPh/Wl2k/FvZEQ7NZ4r1TXwbU/UaMscbfGazzSSy+ISyAsBDW1tJGBzz8rvhMjodawh4a0upzjxSJ5udN9S3j0j2mjXKoEIBdeXVeelsNc1fr8KqmvAcHdrKYy3zGU0d5ylOvhOmkoOw7PwtniEsmm1AMD9oIz3aWzTPmNyu3H4XTzGbWnx2XztdtBwxoHPaXsHOfZd1Eplme4/s42fZRrX1gApCNaLN8hda7cdvS4S5rwS2hwShbiQj3SHqPDdQJdHGLywbXA+yKYksd5Zc14/UhJvDtQYdTs5bJg/Kbuu7C52ZW4S6t0okqUkv8AfpZwwu4TqSI6oHzG4HDkvmg8h+27tb82fGbC2qcaVrZTwBRQVk5uu1BggqS0u3D7xYByLQbfzEDo0ijLRM3zL2Hmlo8S+lM7DpnFzNuTVI3LhzZqncY3AjkGwncUokgD295Xnw43Qy28Lf4fqWtJicavj/FXqnDRjiI7BwebWfUxMeS5zqru0biSzb0eUUkTZIthWJxqvOnApAbC6TahBpdGFhpzbHI6XN25zb9EAsey7eb7UlkZ2uophAIn4IF/CXECwelq07Xtn8vn/Fz9x08UyaaNHPor4yHxU6q9Qil02zSh5d9wysrX0KbQzaJudVzeFLPLAIoX75Q7wDhgI6tV7TeFNq6Yxq7zWn7XMFFSRsYokX1gqgiiETjYAR+mfBM27zuuvla4Z42ybzigsIapuLeE0HD9edQNodQ90LT6PbaXRK8EBGF//9k=","external_url":"https://github.com/tigerwillca/reynard-soft7-sepolia","attributes":[{"trait_type":"Art Slot","value":"036"},{"trait_type":"Species","value":"Fox / Reynard"},{"trait_type":"Network","value":"Sepolia"},{"trait_type":"Drop","value":"Soft7"}]}
