@@ -1,7 +1,7 @@
 {
   "name": "Reynard Soft7 #5 (Art 037)",
   "description": "Seventh Gate / Reynard soft-launch card. Art slot 037. Sepolia testnet only.",
-  "image": "https://raw.githubusercontent.com/tigerwillca/reynard-soft7-sepolia/main/images/037.jpg",
+  "image": "https://cdn.jsdelivr.net/gh/tigerwillca/reynard-soft7-sepolia@ae7d304699989b945bfe8c0f4225f3a7fc952f83/images/037.jpg",
   "external_url": "https://github.com/tigerwillca/reynard-soft7-sepolia",
   "attributes": [
     {
