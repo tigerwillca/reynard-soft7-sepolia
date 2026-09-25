@@ -16,7 +16,7 @@ The repository name stays `reynard-soft7-sepolia`.
 | Mainnet announcement | https://x.com/tigerwillca/status/2103414595930968299 |
 | Deployer | `0x86dF4D2fAA9aC25D408AA4E4Fb890B9918c5f066` |
 
-`index.html` is the public landing: Mask Depth Reynard hero (`soft7-mascot-hero.png`), a full-page forest loop (`soft7-bg-loop.webm` / `.mp4`, poster `soft7-bg-key-01.png`), and the Seventh Gate link orb. Card art is `images/033.jpg`–`images/039.jpg`. Token metadata is `meta/1.json`–`meta/7.json`.
+`index.html` is the public landing. The hero is the Mask Depth banner `mask-depth-reynard/1.jpg` (853×1280). Card art is `images/033.jpg`–`images/039.jpg`. Token metadata is `meta/1.json`–`meta/7.json`.
 
 Built on Robinhood Chain · not a Robinhood product.
 
