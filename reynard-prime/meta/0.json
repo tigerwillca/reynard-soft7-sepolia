@@ -1,0 +1,20 @@
+{
+  "name": "Reynard Soft7 #0 — Reynard Prime",
+  "description": "With the Fox and with Robinhood, Reynard is giving back. Reynard Prime is the apex of Soft7 — tokenId 0 on the same Soft7 collection (name/symbol/traits system as Soft7 1–7). Edition 1/1. William keeps it (not a giveaway). SoftReynard7RH @ 0x73D7 on RH mainnet cannot mint token 0 (MAX_SUPPLY=7, mint already done); SoftReynard7RHPrime is the Soft7+Prime path.",
+  "image": "https://cdn.jsdelivr.net/gh/tigerwillca/reynard-soft7-sepolia@main/mask-depth-reynard/1.jpg",
+  "external_url": "https://github.com/tigerwillca/reynard-soft7-sepolia",
+  "attributes": [
+    { "trait_type": "Art Slot", "value": "Prime / Mask Depth" },
+    { "trait_type": "Species", "value": "Fox / Reynard" },
+    { "trait_type": "Network", "value": "Robinhood Chain" },
+    { "trait_type": "Drop", "value": "Soft7" },
+    { "trait_type": "Tier", "value": "Reynard Prime" },
+    { "trait_type": "Robe", "value": "Purple" },
+    { "trait_type": "Eyes", "value": "Amethyst" },
+    { "trait_type": "Belt", "value": "Lime Potion" },
+    { "trait_type": "Lineage", "value": "wiz-04" },
+    { "trait_type": "Edition", "value": "1/1" },
+    { "trait_type": "Keeper", "value": "William / @tigerwillca" },
+    { "trait_type": "Giveback", "value": "With the Fox and with Robinhood, Reynard is giving back" }
+  ]
+}
