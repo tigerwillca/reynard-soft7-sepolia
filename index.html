@@ -1,47 +1,403 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Reynard Soft7 · Sepolia</title>
-<style>
-  :root { --bg:#080807; --gold:#C9A227; --bone:#E8DCC4; --mute:#9a917f; }
-  * { box-sizing:border-box; }
-  body { margin:0; font-family: ui-sans-serif, system-ui, sans-serif; background:var(--bg); color:var(--bone); line-height:1.5; }
-  main { max-width:42rem; margin:0 auto; padding:2.5rem 1.25rem 4rem; }
-  h1 { font-weight:600; letter-spacing:.02em; color:var(--gold); font-size:1.6rem; margin:0 0 .5rem; }
-  .sub { color:var(--mute); font-size:.95rem; margin-bottom:1.5rem; }
-  .card { border:1px solid #2a281f; border-radius:12px; padding:1rem 1.1rem; margin:1rem 0; background:#0e0d0b; }
-  code, .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size:.8rem; word-break:break-all; color:var(--gold); }
-  a { color:var(--gold); }
-  ul { padding-left:1.1rem; }
-  footer { margin-top:2.5rem; font-size:.8rem; color:var(--mute); }
-  .warn { color:#d4a574; font-size:.9rem; }
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#070705" />
+  <meta name="color-scheme" content="dark" />
+  <title>Reynard Soft7 · Robinhood Chain</title>
+  <meta name="description" content="Reynard Soft7 (SOFT7) is live on Robinhood Chain mainnet, chain ID 4663. Supply 7. Contract 0x73D7b2611509C14078e16f572bE5aC7D91879DC2." />
+  <link rel="canonical" href="https://tigerwillca.github.io/reynard-soft7-sepolia/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Reynard Soft7 · Robinhood Chain" />
+  <meta property="og:description" content="SoftReynard7 is live on Robinhood Chain mainnet (chain ID 4663). Name Reynard Soft7, symbol SOFT7, supply 7." />
+  <meta property="og:url" content="https://tigerwillca.github.io/reynard-soft7-sepolia/" />
+  <meta property="og:image" content="https://tigerwillca.github.io/reynard-soft7-sepolia/images/033.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Reynard Soft7 · Robinhood Chain" />
+  <meta name="twitter:description" content="SoftReynard7 is live on Robinhood Chain mainnet (chain ID 4663). Supply 7." />
+  <meta name="twitter:image" content="https://tigerwillca.github.io/reynard-soft7-sepolia/images/033.jpg" />
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #070705;
+      --raise: #12110c;
+      --ink: #f6f1e6;
+      --muted: #cbbfa8;
+      --gold: #e7d7a4;
+      --gold-deep: #c6a35a;
+      --line: rgba(230, 205, 140, 0.42);
+      --line-soft: rgba(230, 205, 140, 0.16);
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      min-width: 320px;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(ellipse 90% 42% at 50% -8%, rgba(198, 163, 90, 0.18), transparent 58%),
+        var(--bg);
+      color: var(--ink);
+      line-height: 1.5;
+      padding:
+        env(safe-area-inset-top)
+        env(safe-area-inset-right)
+        env(safe-area-inset-bottom)
+        env(safe-area-inset-left);
+    }
+    img { max-width: 100%; height: auto; }
+    a { color: var(--gold); }
+    .skip {
+      position: absolute;
+      left: 0.75rem;
+      top: 0.75rem;
+      transform: translateY(-160%);
+      background: var(--gold);
+      color: #16140c;
+      padding: 0.5rem 0.75rem;
+      z-index: 2;
+    }
+    .skip:focus { transform: none; }
+    .wrap { width: min(100% - 2rem, 68rem); margin: 0 auto; padding: 1.75rem 0 3rem; }
+    .hero { max-width: 40rem; margin: 0 auto 2rem; text-align: center; }
+    .eyebrow {
+      margin: 0 0 0.85rem;
+      color: var(--gold-deep);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .status {
+      display: inline-block;
+      margin: 0 0 1rem;
+      padding: 0.35rem 0.7rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--gold);
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+    }
+    h1 {
+      margin: 0;
+      font-family: ui-serif, Georgia, "Times New Roman", serif;
+      font-weight: 500;
+      font-size: clamp(2.5rem, 11vw, 4.6rem);
+      letter-spacing: -0.03em;
+      line-height: 0.95;
+      color: var(--gold);
+    }
+    .lede { margin: 1rem auto 0; max-width: 32rem; color: var(--muted); font-size: 1.05rem; }
+    .lede strong { color: var(--ink); font-weight: 650; }
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.6rem;
+      margin: 1.4rem 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .facts li {
+      border: 1px solid var(--line-soft);
+      background: rgba(18, 17, 12, 0.72);
+      padding: 0.7rem 0.4rem 0.6rem;
+    }
+    .facts span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .facts strong {
+      display: block;
+      margin-top: 0.15rem;
+      font-family: ui-serif, Georgia, "Times New Roman", serif;
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--gold);
+    }
+    .actions { display: flex; flex-direction: column; gap: 0.65rem; margin-top: 1.35rem; }
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 3rem;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--gold-deep);
+      background: transparent;
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .btn.primary { background: var(--gold); color: #16140c; border-color: var(--gold); }
+    .btn:hover, .btn:focus-visible { background: #f3e6c4; color: #16140c; outline: none; }
+    .btn.primary:hover, .btn.primary:focus-visible { background: #f7edd2; }
+    .announce { margin: 0.9rem 0 0; font-size: 0.92rem; }
+    .panel {
+      max-width: 40rem;
+      margin: 0 auto 2.4rem;
+      background: var(--raise);
+      border: 1px solid var(--line);
+      padding: 1.1rem 1rem 1.15rem;
+      text-align: left;
+    }
+    .panel h2, .block h2 {
+      margin: 0 0 0.9rem;
+      font-family: ui-serif, Georgia, "Times New Roman", serif;
+      font-weight: 500;
+      font-size: 1.55rem;
+      color: var(--gold);
+    }
+    .kicker {
+      margin: 0 0 0.2rem;
+      color: var(--gold-deep);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .addr {
+      margin: 0;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.92rem;
+      line-height: 1.45;
+      overflow-wrap: anywhere;
+      user-select: all;
+      -webkit-user-select: all;
+      color: var(--ink);
+    }
+    .addr-row { display: flex; flex-direction: column; gap: 0.65rem; }
+    .copy {
+      align-self: flex-start;
+      min-height: 2.75rem;
+      padding: 0.45rem 0.9rem;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--gold);
+      font: inherit;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .copy:focus-visible, .copy:hover { outline: 2px solid var(--gold); outline-offset: 2px; }
+    dl { margin: 1rem 0 0; }
+    .row { padding: 0.7rem 0; border-top: 1px solid var(--line-soft); }
+    .row dt { color: var(--muted); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .row dd { margin: 0.2rem 0 0; overflow-wrap: anywhere; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.86rem; }
+    .block { margin: 0 auto 2.5rem; }
+    .block > h2, .block > .intro { max-width: 40rem; margin-left: auto; margin-right: auto; }
+    .intro { margin: 0 auto 1rem; color: var(--muted); }
+    .grid {
+      display: grid;
+      gap: 0.85rem;
+      grid-template-columns: 1fr;
+    }
+    .card {
+      display: flex;
+      flex-direction: column;
+      color: inherit;
+      text-decoration: none;
+      background: #0c0b08;
+      border: 1px solid var(--line-soft);
+    }
+    .card:hover, .card:focus-visible { border-color: var(--gold-deep); outline: none; }
+    .card img { display: block; width: 100%; height: auto; aspect-ratio: 682 / 1024; object-fit: cover; background: #1a160f; }
+    .cap {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5rem;
+      padding: 0.7rem 0.75rem 0.8rem;
+      font-size: 0.92rem;
+    }
+    .cap .num { color: var(--gold); font-family: ui-serif, Georgia, serif; }
+    .cap .slot { color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.75rem; }
+    .steps { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.75rem; }
+    .steps li {
+      border: 1px solid var(--line-soft);
+      background: rgba(18, 17, 12, 0.55);
+      padding: 0.9rem 0.95rem;
+    }
+    .steps h3 { margin: 0 0 0.3rem; font-size: 1rem; font-weight: 650; color: var(--gold); }
+    .steps p { margin: 0; color: var(--muted); }
+    .footnote {
+      max-width: 40rem;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 0.8rem;
+      line-height: 1.45;
+    }
+    .footnote .mono { font-size: 0.75rem; }
+    footer {
+      max-width: 40rem;
+      margin: 1.5rem auto 0;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line-soft);
+      color: var(--muted);
+      font-size: 0.82rem;
+      text-align: center;
+    }
+    @media (min-width: 40rem) {
+      .actions { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+      .btn { flex: 1 1 10rem; }
+      .addr-row { flex-direction: row; align-items: flex-start; justify-content: space-between; }
+      .grid { grid-template-columns: repeat(2, 1fr); }
+      .steps { grid-template-columns: 1fr; }
+    }
+    @media (min-width: 64rem) {
+      .grid { grid-template-columns: repeat(3, 1fr); }
+    }
+  </style>
 </head>
 <body>
-<main>
-  <h1>The Seventh Gate · Soft7</h1>
-  <p class="sub">Sepolia soft launch · seven Reynard cards · testnet only</p>
-  <p class="warn">Not a Robinhood product. No mainnet. No real funds.</p>
-  <div class="card">
-    <div>Contract</div>
-    <div class="mono">0xa96141BFB1dfeffeDcf5E07F204CFC70B2f1AF3f</div>
-    <p style="margin:.75rem 0 0"><a href="https://sepolia.etherscan.io/token/0xa96141BFB1dfeffeDcf5E07F204CFC70B2f1AF3f">Etherscan Sepolia</a>
-    · <a href="https://github.com/tigerwillca/reynard-soft7-sepolia">Metadata repo</a></p>
-  </div>
-  <div class="card">
-    <div>Tokens 1–7 · art 033–039</div>
-    <ul>
-      <li>Metadata: <span class="mono">…/meta/{1..7}.json</span> with embedded JPEG data-URIs</li>
-      <li>Deployer: <span class="mono">0x86dF4D2fAA9aC25D408AA4E4Fb890B9918c5f066</span></li>
-    </ul>
-  </div>
-  <div class="card">
-    <div>Marketplace</div>
-    <p>OpenSea testnets discontinued. Rarible Sepolia index not listing this contract yet. Proof of existence is on-chain + this page.</p>
-  </div>
-  <footer>Seventh Gate · 0x777 · SoftReynard7 soft launch</footer>
-</main>
+  <a class="skip" href="#content">Skip to content</a>
+  <main class="wrap" id="content">
+    <header class="hero">
+      <p class="eyebrow">SoftReynard7 · Robinhood Chain</p>
+      <p class="status">Live on mainnet · chain ID 4663</p>
+      <h1>Reynard Soft7</h1>
+      <p class="lede">Seven cards from The Seventh Gate. Name <strong>Reynard Soft7</strong>, symbol <strong>SOFT7</strong>, supply <strong>7</strong>.</p>
+      <ul class="facts" aria-label="Drop facts">
+        <li><span>Chain</span><strong>4663</strong></li>
+        <li><span>Symbol</span><strong>SOFT7</strong></li>
+        <li><span>Supply</span><strong>7</strong></li>
+      </ul>
+      <div class="actions">
+        <a class="btn primary" href="https://opensea.io/collection/reynard-soft7">View on OpenSea</a>
+        <a class="btn" href="https://robinhoodchain.blockscout.com/address/0x73D7b2611509C14078e16f572bE5aC7D91879DC2">View on Blockscout</a>
+        <a class="btn" href="https://x.com/tigerwillca">Follow on X</a>
+      </div>
+      <p class="announce"><a href="https://x.com/tigerwillca/status/2103414595930968299">Mainnet announcement</a></p>
+    </header>
+
+    <section class="panel" id="contract" aria-labelledby="contract-heading">
+      <h2 id="contract-heading">Contract</h2>
+      <p class="kicker">Robinhood Chain mainnet</p>
+      <div class="addr-row">
+        <p class="addr" id="contract-addr">0x73D7b2611509C14078e16f572bE5aC7D91879DC2</p>
+        <button type="button" class="copy" id="copy-addr" hidden>Copy</button>
+      </div>
+      <dl>
+        <div class="row">
+          <dt>Name</dt>
+          <dd>Reynard Soft7</dd>
+        </div>
+        <div class="row">
+          <dt>Symbol</dt>
+          <dd>SOFT7</dd>
+        </div>
+        <div class="row">
+          <dt>Supply</dt>
+          <dd>7</dd>
+        </div>
+        <div class="row">
+          <dt>Chain ID</dt>
+          <dd>4663</dd>
+        </div>
+        <div class="row">
+          <dt>Deployer</dt>
+          <dd class="mono">0x86dF4D2fAA9aC25D408AA4E4Fb890B9918c5f066</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section class="block" id="the-seven" aria-labelledby="seven-heading">
+      <h2 id="seven-heading">The seven</h2>
+      <p class="intro">Art slots 033–039. Each card opens its OpenSea item.</p>
+      <div class="grid">
+        <a class="card" href="https://opensea.io/assets/robinhood/0x73D7b2611509C14078e16f572bE5aC7D91879DC2/1">
+          <img src="images/033.jpg" width="682" height="1024" alt="" />
+          <span class="cap"><span class="num">#1</span><span class="slot">Art 033</span></span>
+        </a>
+        <a class="card" href="https://opensea.io/assets/robinhood/0x73D7b2611509C14078e16f572bE5aC7D91879DC2/2">
+          <img src="images/034.jpg" width="682" height="1024" alt="" loading="lazy" />
+          <span class="cap"><span class="num">#2</span><span class="slot">Art 034</span></span>
+        </a>
+        <a class="card" href="https://opensea.io/assets/robinhood/0x73D7b2611509C14078e16f572bE5aC7D91879DC2/3">
+          <img src="images/035.jpg" width="682" height="1024" alt="" loading="lazy" />
+          <span class="cap"><span class="num">#3</span><span class="slot">Art 035</span></span>
+        </a>
+        <a class="card" href="https://opensea.io/assets/robinhood/0x73D7b2611509C14078e16f572bE5aC7D91879DC2/4">
+          <img src="images/036.jpg" width="682" height="1024" alt="" loading="lazy" />
+          <span class="cap"><span class="num">#4</span><span class="slot">Art 036</span></span>
+        </a>
+        <a class="card" href="https://opensea.io/assets/robinhood/0x73D7b2611509C14078e16f572bE5aC7D91879DC2/5">
+          <img src="images/037.jpg" width="682" height="1024" alt="" loading="lazy" />
+          <span class="cap"><span class="num">#5</span><span class="slot">Art 037</span></span>
+        </a>
+        <a class="card" href="https://opensea.io/assets/robinhood/0x73D7b2611509C14078e16f572bE5aC7D91879DC2/6">
+          <img src="images/038.jpg" width="682" height="1024" alt="" loading="lazy" />
+          <span class="cap"><span class="num">#6</span><span class="slot">Art 038</span></span>
+        </a>
+        <a class="card" href="https://opensea.io/assets/robinhood/0x73D7b2611509C14078e16f572bE5aC7D91879DC2/7">
+          <img src="images/039.jpg" width="682" height="1024" alt="" loading="lazy" />
+          <span class="cap"><span class="num">#7</span><span class="slot">Art 039</span></span>
+        </a>
+      </div>
+    </section>
+
+    <section class="block" id="see" aria-labelledby="see-heading">
+      <h2 id="see-heading">Where to see them</h2>
+      <ol class="steps">
+        <li>
+          <h3>OpenSea</h3>
+          <p>Open the <a href="https://opensea.io/collection/reynard-soft7">reynard-soft7 collection</a>. Token #1 is <a href="https://opensea.io/assets/robinhood/0x73D7b2611509C14078e16f572bE5aC7D91879DC2/1">here</a>.</p>
+        </li>
+        <li>
+          <h3>Blockscout</h3>
+          <p>Read the contract on <a href="https://robinhoodchain.blockscout.com/address/0x73D7b2611509C14078e16f572bE5aC7D91879DC2">Robinhood Chain Blockscout</a>.</p>
+        </li>
+        <li>
+          <h3>Robinhood Wallet</h3>
+          <p>In the wallet dapp browser, open OpenSea or this page from a shared link. This page does not connect a wallet.</p>
+        </li>
+      </ol>
+    </section>
+
+    <p class="footnote">Earlier soft gate on Ethereum Sepolia: <span class="mono">0xa96141BFB1dfeffeDcf5E07F204CFC70B2f1AF3f</span>.</p>
+    <footer>Built on Robinhood Chain · not a Robinhood product</footer>
+  </main>
+  <script>
+    (function () {
+      var button = document.getElementById("copy-addr");
+      var address = "0x73D7b2611509C14078e16f572bE5aC7D91879DC2";
+      if (!button) return;
+      button.hidden = false;
+      button.addEventListener("click", function () {
+        var label = "Copy";
+        var settled = false;
+        function show(text) {
+          if (settled) return;
+          settled = true;
+          button.textContent = text;
+          window.setTimeout(function () { button.textContent = label; settled = false; }, 1600);
+        }
+        function fallback() {
+          var field = document.createElement("textarea");
+          field.value = address;
+          field.setAttribute("readonly", "");
+          field.style.position = "fixed";
+          field.style.left = "-9999px";
+          document.body.appendChild(field);
+          field.select();
+          var ok = false;
+          try { ok = document.execCommand("copy"); } catch (err) { ok = false; }
+          document.body.removeChild(field);
+          return ok;
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(address).then(function () { show("Copied"); }, function () { show(fallback() ? "Copied" : "Select address"); });
+          window.setTimeout(function () { if (!settled) show(fallback() ? "Copied" : "Select address"); }, 700);
+        } else {
+          show(fallback() ? "Copied" : "Select address");
+        }
+      });
+    })();
+  </script>
 </body>
 </html>

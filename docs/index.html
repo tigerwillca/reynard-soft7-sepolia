@@ -3,75 +3,37 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#080807" />
-  <meta name="description" content="Reynard Soft7 — Seventh Gate soft launch on Ethereum Sepolia. 7 NFTs. Testnet only." />
-  <title>Reynard Soft7 · Sepolia · The Seventh Gate</title>
+  <meta name="robots" content="noindex" />
+  <title>Reynard Soft7 · Robinhood Chain</title>
+  <link rel="canonical" href="https://tigerwillca.github.io/reynard-soft7-sepolia/" />
+  <script>
+    (function () {
+      var path = location.pathname.replace(/\/index\.html$/i, "").replace(/\/$/, "");
+      if (/\/docs$/.test(path)) {
+        location.replace(path.replace(/\/docs$/, "/") || "/");
+      }
+    })();
+  </script>
   <style>
-    :root { color-scheme: dark; --black:#080807; --panel:#11110e; --gold:#c9a227; --gold-bright:#e8d48b; --ink:#e8e0d0; --muted:#8a7f6e; --line:rgba(201,162,39,.28); }
-    * { box-sizing: border-box; }
-    body { margin:0; min-width:320px; font-family:ui-sans-serif,system-ui,sans-serif; background:radial-gradient(ellipse 70% 40% at 50% -5%, rgba(201,162,39,.14), transparent 55%), var(--black); color:var(--ink); line-height:1.55; }
-    a { color: var(--gold-bright); }
-    .wrap { width:min(100% - 2rem, 56rem); margin-inline:auto; padding:2rem 0 4rem; }
-    .banner { border:1px solid var(--line); background:rgba(201,162,39,.08); color:var(--gold-bright); font-family:ui-monospace,Menlo,monospace; font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; text-align:center; padding:.75rem 1rem; margin-bottom:2rem; }
-    header { text-align:center; margin-bottom:2.5rem; }
-    .eyebrow { color:var(--gold); font-family:ui-monospace,Menlo,monospace; font-size:.72rem; letter-spacing:.18em; text-transform:uppercase; margin:0 0 .75rem; }
-    h1 { margin:0 0 .75rem; font-weight:500; font-size:clamp(1.8rem,6vw,2.8rem); letter-spacing:-.03em; color:var(--gold-bright); }
-    .lede { color:var(--muted); max-width:36rem; margin:0 auto 1.5rem; }
-    .contract { background:var(--panel); border:1px solid var(--line); padding:1rem 1.1rem; text-align:left; overflow-wrap:anywhere; }
-    .contract dt { color:var(--gold); font-family:ui-monospace,Menlo,monospace; font-size:.68rem; letter-spacing:.12em; text-transform:uppercase; margin:0 0 .25rem; }
-    .contract dd { margin:0 0 .85rem; font-family:ui-monospace,Menlo,monospace; font-size:.78rem; }
-    .contract dd:last-child { margin-bottom:0; }
-    .links { display:flex; flex-wrap:wrap; gap:.75rem; justify-content:center; margin:1.25rem 0 0; }
-    .btn { display:inline-flex; align-items:center; border:1px solid var(--gold); color:var(--gold-bright); text-decoration:none; font-size:.75rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:.7rem 1rem; min-height:2.75rem; }
-    .btn:hover,.btn:focus-visible { background:var(--gold-bright); color:var(--black); outline:none; }
-    h2 { color:var(--gold-bright); font-weight:500; font-size:1.25rem; margin:2.75rem 0 1rem; }
-    .grid { display:grid; gap:1rem; grid-template-columns:repeat(auto-fill,minmax(9.5rem,1fr)); }
-    .card { background:var(--panel); border:1px solid var(--line); overflow:hidden; text-decoration:none; color:inherit; display:flex; flex-direction:column; }
-    .card:hover,.card:focus-visible { border-color:var(--gold); outline:none; }
-    .card .thumb { aspect-ratio:1; display:flex; align-items:center; justify-content:center; background:radial-gradient(circle at 50% 35%, #3a3118, #080807); border-bottom:1px solid var(--line); color:var(--gold-bright); font-family:ui-monospace,Menlo,monospace; font-size:1.1rem; letter-spacing:.08em; }
-    .card figcaption { padding:.65rem .7rem .8rem; font-size:.78rem; }
-    .card strong { display:block; color:var(--gold-bright); font-weight:600; }
-    .card span { color:var(--muted); font-family:ui-monospace,Menlo,monospace; font-size:.68rem; }
-    .note { margin-top:2rem; color:var(--muted); font-size:.85rem; border-top:1px solid var(--line); padding-top:1.25rem; }
-    footer { margin-top:2.5rem; color:var(--muted); font-size:.72rem; text-align:center; }
-    footer strong { color:var(--gold); font-weight:500; }
+    body { margin: 0; padding: 2rem 1.25rem; font-family: ui-sans-serif, system-ui, sans-serif; background: #070705; color: #f6f1e6; line-height: 1.5; }
+    a { color: #e7d7a4; }
+    main { max-width: 36rem; margin: 0 auto; }
+    code { overflow-wrap: anywhere; color: #e7d7a4; }
+    footer { margin-top: 2rem; color: #cbbfa8; font-size: 0.85rem; }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="banner" role="status">Sepolia testnet only · not mainnet · not Robinhood Chain · no production mint</div>
-    <header>
-      <p class="eyebrow">The Seventh Gate · SoftReynard7</p>
-      <h1>Reynard Soft7</h1>
-      <p class="lede">Seven soft-launch NFTs on Ethereum Sepolia. Proof of deploy, metadata, and court art — before the Gate opens on production.</p>
-      <dl class="contract">
-        <dt>NFT contract</dt>
-        <dd>0xa96141BFB1dfeffeDcf5E07F204CFC70B2f1AF3f</dd>
-        <dt>Deployer</dt>
-        <dd>0x86dF4D2fAA9aC25D408AA4E4Fb890B9918c5f066</dd>
-        <dt>Mint tx</dt>
-        <dd>0x2ea4ad806c9184a4d318ac4c80ff0bac55fc4ca80fff1c9fec25cc23924ef7be</dd>
-        <dt>Tokens</dt>
-        <dd>1–7 · art slots 033–039 · baseURI github meta/ (data:image/jpeg)</dd>
-      </dl>
-      <div class="links">
-        <a class="btn" href="https://sepolia.etherscan.io/token/0xa96141BFB1dfeffeDcf5E07F204CFC70B2f1AF3f" rel="noopener">Etherscan token</a>
-        <a class="btn" href="https://sepolia.etherscan.io/tx/0x2ea4ad806c9184a4d318ac4c80ff0bac55fc4ca80fff1c9fec25cc23924ef7be" rel="noopener">Mint tx</a>
-        <a class="btn" href="https://github.com/tigerwillca/reynard-soft7-sepolia" rel="noopener">GitHub meta</a>
-      </div>
-    </header>
-    <h2>The seven</h2>
-    <div class="grid" aria-label="Soft7 token cards">
-      <a class="card" href="https://sepolia.etherscan.io/nft/0xa96141BFB1dfeffeDcf5E07F204CFC70B2f1AF3f/1"><div class="thumb" aria-hidden="true">#1 · 033</div><figcaption><strong>#1 · Art 033</strong><span>token 1</span></figcaption></a>
-      <a class="card" href="https://sepolia.etherscan.io/nft/0xa96141BFB1dfeffeDcf5E07F204CFC70B2f1AF3f/2"><div class="thumb" aria-hidden="true">#2 · 034</div><figcaption><strong>#2 · Art 034</strong><span>token 2</span></figcaption></a>
-      <a class="card" href="https://sepolia.etherscan.io/nft/0xa96141BFB1dfeffeDcf5E07F204CFC70B2f1AF3f/3"><div class="thumb" aria-hidden="true">#3 · 035</div><figcaption><strong>#3 · Art 035</strong><span>token 3</span></figcaption></a>
-      <a class="card" href="https://sepolia.etherscan.io/nft/0xa96141BFB1dfeffeDcf5E07F204CFC70B2f1AF3f/4"><div class="thumb" aria-hidden="true">#4 · 036</div><figcaption><strong>#4 · Art 036</strong><span>token 4</span></figcaption></a>
-      <a class="card" href="https://sepolia.etherscan.io/nft/0xa96141BFB1dfeffeDcf5E07F204CFC70B2f1AF3f/5"><div class="thumb" aria-hidden="true">#5 · 037</div><figcaption><strong>#5 · Art 037</strong><span>token 5</span></figcaption></a>
-      <a class="card" href="https://sepolia.etherscan.io/nft/0xa96141BFB1dfeffeDcf5E07F204CFC70B2f1AF3f/6"><div class="thumb" aria-hidden="true">#6 · 038</div><figcaption><strong>#6 · Art 038</strong><span>token 6</span></figcaption></a>
-      <a class="card" href="https://sepolia.etherscan.io/nft/0xa96141BFB1dfeffeDcf5E07F204CFC70B2f1AF3f/7"><div class="thumb" aria-hidden="true">#7 · 039</div><figcaption><strong>#7 · Art 039</strong><span>token 7</span></figcaption></a>
-    </div>
-    <p class="note">OpenSea testnets are discontinued. This page is the public soft-launch face for Soft7. Production RH Chain 4663 stays on HOLD until explicit GO. Built for The Seventh Gate · not a Robinhood product.</p>
-    <footer><strong>The Seventh Gate · SoftReynard7</strong><br />tigerwillca/reynard-soft7-sepolia · Sepolia · 2026</footer>
-  </div>
+  <main>
+    <h1>Reynard Soft7</h1>
+    <p>Live on Robinhood Chain mainnet, chain ID 4663. Symbol SOFT7. Supply 7.</p>
+    <p>Contract <code>0x73D7b2611509C14078e16f572bE5aC7D91879DC2</code></p>
+    <p><a href="../">Open the landing page</a></p>
+    <p>
+      <a href="https://opensea.io/collection/reynard-soft7">View on OpenSea</a><br />
+      <a href="https://robinhoodchain.blockscout.com/address/0x73D7b2611509C14078e16f572bE5aC7D91879DC2">View on Blockscout</a><br />
+      <a href="https://x.com/tigerwillca">Follow on X</a>
+    </p>
+    <footer>Built on Robinhood Chain · not a Robinhood product</footer>
+  </main>
 </body>
 </html>

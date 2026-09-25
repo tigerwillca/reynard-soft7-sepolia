@@ -1,7 +1,40 @@
 # reynard-soft7-sepolia
 
-SoftReynard7 / Reynard Soft7 metadata and art. Supply 7.
+**Reynard Soft7 (SOFT7)** is live on **Robinhood Chain mainnet** (chain ID **4663**). Supply **7**.
 
-Live on Robinhood Chain mainnet (chain 4663), contract `0x73D7b2611509C14078e16f572bE5aC7D91879DC2`. Token metadata in `meta/1.json`–`meta/7.json` describes that mainnet drop. Image files are unchanged.
+The repository name stays `reynard-soft7-sepolia`.
 
-Sepolia soft-gate remains history only: contract `0xa96141BFB1dfeffeDcf5E07F204CFC70B2f1AF3f`.
+| | |
+| --- | --- |
+| Landing | https://tigerwillca.github.io/reynard-soft7-sepolia/ |
+| Contract | `0x73D7b2611509C14078e16f572bE5aC7D91879DC2` |
+| Name / symbol / supply | Reynard Soft7 / SOFT7 / 7 |
+| OpenSea | https://opensea.io/collection/reynard-soft7 |
+| Token #1 | https://opensea.io/assets/robinhood/0x73D7b2611509C14078e16f572bE5aC7D91879DC2/1 |
+| Blockscout | https://robinhoodchain.blockscout.com/address/0x73D7b2611509C14078e16f572bE5aC7D91879DC2 |
+| X | https://x.com/tigerwillca |
+| Mainnet announcement | https://x.com/tigerwillca/status/2103414595930968299 |
+| Deployer | `0x86dF4D2fAA9aC25D408AA4E4Fb890B9918c5f066` |
+
+`index.html` is the public landing. Card art is `images/033.jpg`–`images/039.jpg`. Token metadata is `meta/1.json`–`meta/7.json`.
+
+Built on Robinhood Chain · not a Robinhood product.
+
+## GitHub Pages
+
+Pages is not enabled on this repository yet. Turn it on once:
+
+1. Open **Settings → Pages**.
+2. Under **Build and deployment**, set **Source** to **GitHub Actions**.
+
+`.github/workflows/pages.yml` publishes the repository root (`/`) on every push to `main`, and when the workflow is run by hand. After that setting is saved, the site is:
+
+https://tigerwillca.github.io/reynard-soft7-sepolia/
+
+Leave the Pages folder off `/docs`. That path only sends people to the root landing.
+
+If you would rather publish without Actions, set **Source** to **Deploy from a branch**, branch **`main`**, folder **`/ (root)`**, and do that instead of GitHub Actions. The workflow above is the setup this repo expects. A `.nojekyll` file is at the repo root so a branch deploy serves the files as-is.
+
+## Earlier soft gate
+
+The Sepolia contract `0xa96141BFB1dfeffeDcf5E07F204CFC70B2f1AF3f` was the prior soft gate. The live drop is the Robinhood Chain mainnet contract above.
