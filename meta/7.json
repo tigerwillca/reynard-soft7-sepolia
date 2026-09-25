@@ -1,0 +1,12 @@
+{
+  "name": "Reynard Soft7 #7 (Art 039)",
+  "description": "Seventh Gate / Reynard soft-launch card. Art slot 039. Sepolia testnet only.",
+  "image": "https://raw.githubusercontent.com/tigerwillca/reynard-soft7-sepolia/main/images/039.jpg",
+  "external_url": "https://github.com/tigerwillca/reynard-soft7-sepolia",
+  "attributes": [
+    {"trait_type": "Art Slot", "value": "039"},
+    {"trait_type": "Species", "value": "Fox / Reynard"},
+    {"trait_type": "Network", "value": "Sepolia"},
+    {"trait_type": "Drop", "value": "Soft7"}
+  ]
+}
