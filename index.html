@@ -1,548 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0a0614" />
-  <meta name="description" content="Reynard Soft7 — SoftReynard7 live on Robinhood Chain mainnet. Seven cards. OpenSea + Blockscout. The Seventh Gate." />
-  <title>Reynard Soft7 · Robinhood Chain · The Seventh Gate</title>
-  <style>
-    :root {
-      color-scheme: dark;
-      --bg: #07050f;
-      --panel: rgba(12, 8, 22, .78);
-      --indigo: #2a1850;
-      --purple: #6b3fa0;
-      --purple-glow: #9b6dff;
-      --lime: #c6ff4a;
-      --lime-deep: #7dff3a;
-      --gold: #e0c46a;
-      --gold-bright: #f0e0a8;
-      --ink: #ebe4f5;
-      --muted: #9a8fb0;
-      --line: rgba(155, 109, 255, .28);
-      --ember: rgba(198, 255, 74, .55);
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
-      background: var(--bg);
-      color: var(--ink);
-      line-height: 1.55;
-      overflow-x: hidden;
-    }
-    a { color: var(--gold-bright); }
-
-    /* Full-page looping video + veil */
-    .bg-video {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 0;
-      pointer-events: none;
-      filter: saturate(1.15) contrast(1.05) brightness(.55);
-    }
-    .bg-veil {
-      position: fixed;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-      background:
-        radial-gradient(ellipse 80% 55% at 50% -10%, rgba(90, 40, 160, .42), transparent 60%),
-        radial-gradient(ellipse 50% 40% at 80% 70%, rgba(120, 255, 60, .08), transparent 55%),
-        radial-gradient(ellipse 40% 35% at 15% 80%, rgba(70, 30, 120, .35), transparent 50%),
-        linear-gradient(180deg, rgba(7, 5, 15, .55) 0%, rgba(7, 5, 15, .78) 45%, rgba(7, 5, 15, .92) 100%);
-    }
-
-    .wrap { width: min(100% - 2rem, 56rem); margin-inline: auto; padding: 2rem 0 4rem; position: relative; z-index: 2; }
-    .banner {
-      border: 1px solid var(--line);
-      background: rgba(107, 63, 160, .18);
-      color: var(--gold-bright);
-      font-family: ui-monospace, Menlo, monospace;
-      font-size: .72rem;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      text-align: center;
-      padding: .75rem 1rem;
-      margin-bottom: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 0 24px rgba(155, 109, 255, .12);
-    }
-    header { text-align: center; margin-bottom: 2rem; }
-    .eyebrow {
-      color: var(--purple-glow);
-      font-family: ui-monospace, Menlo, monospace;
-      font-size: .72rem;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      margin: 0 0 .75rem;
-    }
-    h1 {
-      margin: 0 0 .75rem;
-      font-weight: 500;
-      font-size: clamp(1.8rem, 6vw, 2.8rem);
-      letter-spacing: -.03em;
-      color: var(--gold-bright);
-      text-shadow: 0 0 28px rgba(155, 109, 255, .35);
-    }
-    .lede { color: var(--muted); max-width: 36rem; margin: 0 auto 1.5rem; }
-    .ctas { display: flex; flex-wrap: wrap; gap: .75rem; justify-content: center; margin: 1.25rem 0 2rem; }
-    .btn {
-      display: inline-block;
-      padding: .7rem 1.1rem;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      text-decoration: none;
-      color: var(--gold-bright);
-      background: rgba(107, 63, 160, .22);
-      font-size: .9rem;
-      transition: background .2s, box-shadow .2s, border-color .2s;
-    }
-    .btn:hover, .btn:focus-visible {
-      background: rgba(155, 109, 255, .28);
-      box-shadow: 0 0 18px rgba(198, 255, 74, .18);
-      border-color: rgba(198, 255, 74, .4);
-      outline: none;
-    }
-    .btn.primary {
-      background: rgba(198, 255, 74, .12);
-      border-color: rgba(198, 255, 74, .35);
-      color: #e8ffb0;
-    }
-    .card {
-      backdrop-filter: blur(10px);
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 1rem 1.1rem;
-      margin: 1rem 0;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, .35);
-    }
-    .card h2 {
-      margin: 0 0 .75rem;
-      font-size: .85rem;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--purple-glow);
-      font-weight: 600;
-    }
-    .mono {
-      font-family: ui-monospace, Menlo, monospace;
-      font-size: .78rem;
-      word-break: break-all;
-      color: var(--gold-bright);
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr));
-      gap: .75rem;
-    }
-    .grid figure { margin: 0; text-align: center; }
-    .grid img {
-      width: 100%;
-      aspect-ratio: 1;
-      object-fit: cover;
-      border-radius: 8px;
-      border: 1px solid var(--line);
-      background: #0a0614;
-    }
-    .grid figcaption { font-size: .72rem; color: var(--muted); margin-top: .35rem; }
-    ol { padding-left: 1.2rem; color: var(--muted); }
-    footer {
-      margin-top: 2.5rem;
-      text-align: center;
-      font-size: .8rem;
-      color: var(--muted);
-    }
-    .note { font-size: .85rem; color: var(--muted); }
-    .hero {
-      width: min(100%, 28rem);
-      margin: 0 auto 1.5rem;
-      border-radius: 16px;
-      border: 1px solid rgba(155, 109, 255, .35);
-      overflow: hidden;
-      background: #0a0614;
-      box-shadow:
-        0 0 40px rgba(155, 109, 255, .22),
-        0 0 60px rgba(198, 255, 74, .08);
-    }
-    .hero img {
-      display: block;
-      width: 100%;
-      height: auto;
-      aspect-ratio: 1024 / 1536;
-      object-fit: contain;
-      object-position: center top;
-    }
-
-    /* ——— Seventh Gate orb ——— */
-    .gate-section {
-      margin: 2.5rem 0 1.5rem;
-      text-align: center;
-    }
-    .gate-section > h2 {
-      margin: 0 0 .35rem;
-      font-size: .85rem;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      color: var(--lime);
-      font-weight: 600;
-      text-shadow: 0 0 18px rgba(198, 255, 74, .45);
-    }
-    .gate-section > p.gate-lede {
-      color: var(--muted);
-      font-size: .9rem;
-      max-width: 28rem;
-      margin: 0 auto 1.25rem;
-    }
-    .gate-stage {
-      position: relative;
-      width: min(100%, 22rem);
-      aspect-ratio: 1;
-      margin: 0 auto;
-      perspective: 900px;
-      isolation: isolate;
-    }
-    .gate-mist {
-      position: absolute;
-      inset: -8%;
-      border-radius: 50%;
-      background:
-        radial-gradient(circle at 50% 50%, rgba(90, 40, 160, .35), transparent 62%),
-        radial-gradient(circle at 40% 60%, rgba(198, 255, 74, .12), transparent 45%);
-      filter: blur(18px);
-      animation: mist-pulse 7s ease-in-out infinite;
-      pointer-events: none;
-      z-index: 0;
-    }
-    @keyframes mist-pulse {
-      0%, 100% { opacity: .7; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.06); }
-    }
-
-    .gate-orb {
-      position: absolute;
-      inset: 18%;
-      border-radius: 50%;
-      transform-style: preserve-3d;
-      animation: orb-spin 28s linear infinite;
-      z-index: 2;
-    }
-    @keyframes orb-spin {
-      from { transform: rotateY(0deg) rotateX(8deg); }
-      to   { transform: rotateY(360deg) rotateX(8deg); }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .gate-orb { animation: orb-spin 90s linear infinite; }
-      .gate-mist { animation: none; }
-      .swirl, .ring-spin { animation-duration: 120s !important; }
-    }
-
-    .orb-glass {
-      position: absolute;
-      inset: 0;
-      border-radius: 50%;
-      background:
-        radial-gradient(circle at 32% 28%, rgba(255,255,255,.45), transparent 28%),
-        radial-gradient(circle at 50% 55%, rgba(198, 255, 74, .55), rgba(90, 40, 160, .35) 45%, rgba(10, 6, 20, .85) 72%),
-        radial-gradient(circle at 70% 70%, rgba(224, 196, 106, .35), transparent 40%);
-      box-shadow:
-        inset 0 0 40px rgba(198, 255, 74, .35),
-        inset -12px -16px 36px rgba(40, 10, 70, .7),
-        0 0 40px rgba(198, 255, 74, .35),
-        0 0 80px rgba(155, 109, 255, .25);
-      border: 1px solid rgba(224, 196, 106, .35);
-      overflow: hidden;
-    }
-    .orb-glass::before {
-      content: "";
-      position: absolute;
-      inset: 12%;
-      border-radius: 50%;
-      background:
-        conic-gradient(from 0deg, transparent, rgba(198,255,74,.55), transparent 30%, rgba(224,196,106,.4), transparent 55%, rgba(155,109,255,.35), transparent 75%);
-      filter: blur(6px);
-      animation: swirl 9s linear infinite;
-      opacity: .85;
-    }
-    .orb-glass::after {
-      content: "";
-      position: absolute;
-      inset: 22%;
-      border-radius: 50%;
-      background:
-        radial-gradient(circle at 45% 40%, rgba(232, 255, 160, .9), rgba(198, 255, 74, .4) 35%, transparent 65%);
-      filter: blur(4px);
-      animation: core-breathe 4.5s ease-in-out infinite;
-    }
-    @keyframes swirl {
-      from { transform: rotate(0deg); }
-      to   { transform: rotate(360deg); }
-    }
-    @keyframes core-breathe {
-      0%, 100% { opacity: .75; transform: scale(.92); }
-      50% { opacity: 1; transform: scale(1.05); }
-    }
-
-    .ring {
-      position: absolute;
-      inset: 8%;
-      border-radius: 50%;
-      border: 1px solid rgba(198, 255, 74, .22);
-      box-shadow: 0 0 12px rgba(198, 255, 74, .15), inset 0 0 12px rgba(155, 109, 255, .15);
-      pointer-events: none;
-      z-index: 1;
-    }
-    .ring.outer {
-      inset: 2%;
-      border-color: rgba(155, 109, 255, .28);
-      animation: ring-spin 40s linear infinite reverse;
-    }
-    .ring.mid {
-      inset: 10%;
-      border-style: dashed;
-      border-color: rgba(224, 196, 106, .28);
-      animation: ring-spin 32s linear infinite;
-    }
-    @keyframes ring-spin {
-      from { transform: rotate(0deg); }
-      to   { transform: rotate(360deg); }
-    }
-
-    /* Link nodes around the orb */
-    .gate-nodes {
-      position: absolute;
-      inset: 0;
-      z-index: 3;
-      pointer-events: none;
-    }
-    .gate-node {
-      pointer-events: auto;
-      position: absolute;
-      width: 3.1rem;
-      height: 3.1rem;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      text-decoration: none;
-      color: var(--ink);
-      font-size: .58rem;
-      font-weight: 700;
-      letter-spacing: .04em;
-      text-transform: uppercase;
-      background:
-        radial-gradient(circle at 35% 30%, rgba(255,255,255,.35), transparent 40%),
-        radial-gradient(circle at 50% 50%, rgba(90, 40, 160, .95), rgba(20, 10, 40, .98));
-      border: 1px solid rgba(198, 255, 74, .45);
-      box-shadow:
-        0 0 14px rgba(198, 255, 74, .4),
-        0 0 28px rgba(155, 109, 255, .35),
-        inset 0 0 10px rgba(198, 255, 74, .15);
-      transition: transform .2s, box-shadow .2s, border-color .2s;
-      transform: translate(-50%, -50%);
-    }
-    .gate-node span {
-      line-height: 1.05;
-      text-align: center;
-      padding: .15rem;
-      text-shadow: 0 0 8px rgba(0,0,0,.8);
-    }
-    .gate-node:hover, .gate-node:focus-visible {
-      transform: translate(-50%, -50%) scale(1.12);
-      border-color: rgba(232, 255, 160, .9);
-      box-shadow:
-        0 0 22px rgba(198, 255, 74, .7),
-        0 0 40px rgba(155, 109, 255, .5);
-      outline: none;
-      z-index: 5;
-    }
-    /* Positions: N, E, S, W around orb */
-    .gate-node.n { left: 50%; top: 6%; }
-    .gate-node.e { left: 94%; top: 50%; }
-    .gate-node.s { left: 50%; top: 94%; }
-    .gate-node.w { left: 6%;  top: 50%; }
-
-    .gate-fallback {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .5rem;
-      justify-content: center;
-      margin-top: 1.1rem;
-    }
-    .gate-fallback a {
-      font-size: .75rem;
-      padding: .45rem .85rem;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      text-decoration: none;
-      color: var(--gold-bright);
-      background: rgba(107, 63, 160, .2);
-    }
-    .gate-fallback a:hover, .gate-fallback a:focus-visible {
-      border-color: rgba(198, 255, 74, .45);
-      box-shadow: 0 0 12px rgba(198, 255, 74, .2);
-      outline: none;
-    }
-
-    @media (max-width: 420px) {
-      .gate-node {
-        width: 2.65rem;
-        height: 2.65rem;
-        font-size: .5rem;
-      }
-      .hero { width: min(100%, 24rem); }
-    }
-  </style>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="theme-color" content="#0a0614"/>
+<meta name="description" content="Reynard Soft7 on Robinhood Chain — seven cards that give back. 1.5% of every secondary sale to Soft7 holders, paid quarterly on-chain."/>
+<title>Reynard Soft7 · This project gives back · Robinhood Chain</title>
+<style>
+:root{color-scheme:dark;--bg:#07050f;--panel:rgba(12,8,22,.82);--purple:#6b3fa0;--glow:#9b6dff;--lime:#CCFF00;--gold:#f0e0a8;--ink:#ebe4f5;--muted:#9a8fb0;--line:rgba(155,109,255,.28)}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+a{color:var(--gold)}
+.bg{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:saturate(1.15)contrast(1.05)brightness(.55)}
+.veil{position:fixed;inset:0;z-index:-1;background:radial-gradient(ellipse 80% 55% at 50% -10%,rgba(90,40,160,.42),transparent 60%),linear-gradient(180deg,rgba(7,5,15,.55),rgba(7,5,15,.92))}
+.wrap{width:min(100% - 2rem,56rem);margin:0 auto;padding:2rem 0 4rem}
+.banner{border:1px solid var(--line);background:rgba(107,63,160,.18);color:var(--gold);font:700 .72rem/1.4 ui-monospace,Menlo,monospace;letter-spacing:.14em;text-transform:uppercase;text-align:center;padding:.75rem 1rem;margin-bottom:2rem;border-radius:8px}
+header{text-align:center}
+.hero{width:min(100%,22rem);margin:0 auto 1.5rem;border-radius:16px;border:1px solid rgba(155,109,255,.35);overflow:hidden;background:#0a0614;box-shadow:0 0 40px rgba(155,109,255,.22)}
+.hero img{display:block;width:100%;height:auto;aspect-ratio:853/1280;object-fit:cover;object-position:center top}
+.eyebrow{color:var(--glow);font:700 .72rem/1.4 ui-monospace,Menlo,monospace;letter-spacing:.18em;text-transform:uppercase}
+h1{margin:.5rem 0 .75rem;font-weight:500;font-size:clamp(1.8rem,6vw,2.8rem);letter-spacing:-.03em;color:var(--gold);text-shadow:0 0 28px rgba(155,109,255,.35)}
+.lede{color:var(--muted);max-width:36rem;margin:0 auto 1.5rem}
+.ctas{display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center;margin:1.25rem 0 2rem}
+.btn{display:inline-block;padding:.7rem 1.1rem;border:1px solid var(--line);border-radius:999px;text-decoration:none;color:var(--gold);background:rgba(107,63,160,.22);font-size:.9rem}
+.btn.primary{background:rgba(204,255,0,.12);border-color:rgba(204,255,0,.35);color:#e8ffb0}
+.card{backdrop-filter:blur(10px);background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:1.1rem;margin:1rem 0;box-shadow:0 8px 32px rgba(0,0,0,.35)}
+.card h2{margin:0 0 .75rem;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;color:var(--glow)}
+.giveback{border-color:rgba(204,255,0,.28)}
+.giveback h2{color:var(--lime);font-size:clamp(1.25rem,3.5vw,1.55rem);letter-spacing:-.02em;text-transform:none}
+.math{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin:1rem 0}
+@media(max-width:640px){.math{grid-template-columns:1fr}}
+.stat{border:1px solid var(--line);border-radius:10px;padding:.85rem 1rem;background:rgba(7,5,15,.55)}
+.stat .num{font:700 1.35rem/1.2 ui-monospace,Menlo,monospace;color:var(--lime)}
+.stat .label{display:block;margin-top:.35rem;font-size:.8rem;color:var(--muted)}
+.mono{font:700 .78rem/1.4 ui-monospace,Menlo,monospace;word-break:break-all;color:var(--gold)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(7.5rem,1fr));gap:.75rem}
+.grid figure{margin:0;text-align:center}
+.grid img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:8px;border:1px solid var(--line);background:#0a0614}
+.grid figcaption{font-size:.72rem;color:var(--muted);margin-top:.35rem}
+footer{margin-top:2.5rem;text-align:center;font-size:.8rem;color:var(--muted)}
+.note{font-size:.85rem;color:var(--muted)}
+.status{margin-top:1rem;padding-top:1rem;border-top:1px solid var(--line);font:700 .72rem/1.4 ui-monospace,Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.status span{color:var(--gold)}
+</style>
 </head>
 <body>
-  <video class="bg-video" autoplay muted loop playsinline poster="./soft7-bg-key-01.png" aria-hidden="true">
-    <source src="./soft7-bg-loop.webm" type="video/webm" />
-    <source src="./soft7-bg-loop.mp4" type="video/mp4" />
-  </video>
-  <div class="bg-veil" aria-hidden="true"></div>
-
-  <div class="wrap">
-    <div class="banner">Live · Robinhood Chain mainnet · chain ID 4663</div>
-
-    <header>
-      <div class="hero">
-        <img
-          src="./soft7-mascot-hero.png"
-          width="1024"
-          height="1536"
-          alt="Soft7 mascot banner — Reynard in a purple hooded robe and mask, glowing purple eyes, lime portal flask. Banner text: REYNARD, MASK DEPTH."
-        />
-      </div>
-      <p class="eyebrow">The Seventh Gate · SoftReynard7 · Mask Depth</p>
-      <h1>Reynard Soft7</h1>
-      <p class="lede">Seven named cards. Soft launch on Robinhood Chain mainnet — not a promise, a mint.</p>
-      <div class="ctas">
-        <a class="btn primary" href="https://opensea.io/collection/reynard-soft7">View on OpenSea</a>
-        <a class="btn" href="https://robinhoodchain.blockscout.com/address/0x73D7b2611509C14078e16f572bE5aC7D91879DC2">Blockscout</a>
-        <a class="btn" href="https://x.com/tigerwillca">@tigerwillca</a>
-      </div>
-    </header>
-
-    <!-- Interactive Seventh Gate celestial portal orb -->
-    <section class="gate-section card" aria-labelledby="gate-heading">
-      <h2 id="gate-heading">The Seventh Gate</h2>
-      <p class="gate-lede">A glass portal orb — lime ember swirling inside — with Soft7 thresholds as luminous nodes. Touch a node to pass through.</p>
-
-      <div class="gate-stage" role="group" aria-label="Seventh Gate portal — Soft7 link nodes">
-        <div class="gate-mist" aria-hidden="true"></div>
-        <div class="ring outer" aria-hidden="true"></div>
-        <div class="ring mid" aria-hidden="true"></div>
-        <div class="gate-orb" aria-hidden="true">
-          <div class="orb-glass"></div>
-        </div>
-        <nav class="gate-nodes" aria-label="Soft7 portals">
-          <a class="gate-node n"
-             href="https://opensea.io/collection/reynard-soft7"
-             target="_blank" rel="noopener noreferrer"
-             aria-label="OpenSea — Reynard Soft7 collection"
-             title="OpenSea collection">
-            <span>Open<br />Sea</span>
-          </a>
-          <a class="gate-node e"
-             href="https://robinhoodchain.blockscout.com/address/0x73D7b2611509C14078e16f572bE5aC7D91879DC2"
-             target="_blank" rel="noopener noreferrer"
-             aria-label="Blockscout — Soft7 contract on Robinhood Chain"
-             title="Blockscout contract">
-            <span>Block<br />scout</span>
-          </a>
-          <a class="gate-node s"
-             href="https://x.com/tigerwillca/status/2103414595930968299"
-             target="_blank" rel="noopener noreferrer"
-             aria-label="X — Soft7 Robinhood Chain mainnet announce"
-             title="Mainnet announce on X">
-            <span>Main<br />net</span>
-          </a>
-          <a class="gate-node w"
-             href="https://x.com/tigerwillca"
-             target="_blank" rel="noopener noreferrer"
-             aria-label="X profile — @tigerwillca"
-             title="@tigerwillca on X">
-            <span>X</span>
-          </a>
-        </nav>
-      </div>
-
-      <div class="gate-fallback" aria-label="Soft7 links (list)">
-        <a href="https://opensea.io/collection/reynard-soft7" target="_blank" rel="noopener noreferrer">OpenSea</a>
-        <a href="https://robinhoodchain.blockscout.com/address/0x73D7b2611509C14078e16f572bE5aC7D91879DC2" target="_blank" rel="noopener noreferrer">Blockscout</a>
-        <a href="https://x.com/tigerwillca" target="_blank" rel="noopener noreferrer">X · @tigerwillca</a>
-        <a href="https://x.com/tigerwillca/status/2103414595930968299" target="_blank" rel="noopener noreferrer">Mainnet announce</a>
-      </div>
-    </section>
-
-    <section class="card" aria-label="Contract">
-      <h2>Contract</h2>
-      <p class="mono">0x73D7b2611509C14078e16f572bE5aC7D91879DC2</p>
-      <p class="note" style="margin:.75rem 0 0">Reynard Soft7 · SOFT7 · supply 7 · Robinhood Chain 4663</p>
-    </section>
-
-    <section class="card" aria-label="Gallery">
-      <h2>Cards 1–7</h2>
-      <div class="grid">
-        <figure><img src="https://cdn.jsdelivr.net/gh/tigerwillca/reynard-soft7-sepolia@main/images/033.jpg" alt="Soft7 #1 Art 033" loading="lazy" /><figcaption>#1 · 033</figcaption></figure>
-        <figure><img src="https://cdn.jsdelivr.net/gh/tigerwillca/reynard-soft7-sepolia@main/images/034.jpg" alt="Soft7 #2 Art 034" loading="lazy" /><figcaption>#2 · 034</figcaption></figure>
-        <figure><img src="https://cdn.jsdelivr.net/gh/tigerwillca/reynard-soft7-sepolia@main/images/035.jpg" alt="Soft7 #3 Art 035" loading="lazy" /><figcaption>#3 · 035</figcaption></figure>
-        <figure><img src="https://cdn.jsdelivr.net/gh/tigerwillca/reynard-soft7-sepolia@main/images/036.jpg" alt="Soft7 #4 Art 036" loading="lazy" /><figcaption>#4 · 036</figcaption></figure>
-        <figure><img src="https://cdn.jsdelivr.net/gh/tigerwillca/reynard-soft7-sepolia@main/images/037.jpg" alt="Soft7 #5 Art 037" loading="lazy" /><figcaption>#5 · 037</figcaption></figure>
-        <figure><img src="https://cdn.jsdelivr.net/gh/tigerwillca/reynard-soft7-sepolia@main/images/038.jpg" alt="Soft7 #6 Art 038" loading="lazy" /><figcaption>#6 · 038</figcaption></figure>
-        <figure><img src="https://cdn.jsdelivr.net/gh/tigerwillca/reynard-soft7-sepolia@main/images/039.jpg" alt="Soft7 #7 Art 039" loading="lazy" /><figcaption>#7 · 039</figcaption></figure>
-      </div>
-    </section>
-
-    <section class="card" aria-label="How to see Soft7">
-      <h2>How to see Soft7 tonight</h2>
-      <ol>
-        <li>Open the OpenSea collection (best Robinhood-adjacent surface).</li>
-        <li>Confirm on Blockscout for on-chain truth.</li>
-        <li>Optional: Robinhood Wallet dapp browser → OpenSea (RH Chain). Soft7 is not claimed for the native Wallet NFT tab.</li>
-      </ol>
-    </section>
-
-    <section class="card" aria-label="Announce">
-      <h2>Mainnet announce</h2>
-      <p><a href="https://x.com/tigerwillca/status/2103414595930968299">Soft7 RH mainnet announce on X</a></p>
-      <p class="note">Sepolia soft gate still exists as prior chapter only: <span class="mono">0xa96141BFB1dfeffeDcf5E07F204CFC70B2f1AF3f</span></p>
-    </section>
-
-    <footer>
-      Built on Robinhood Chain · not a Robinhood product<br />
-      Seventh Gate · SoftReynard7 Soft7 · Mask Depth
-    </footer>
-  </div>
-
-  <script>
-    (function () {
-      var video = document.querySelector("video.bg-video");
-      if (video) {
-        var kick = function () {
-          var pending = video.play();
-          if (pending && pending.catch) pending.catch(function () {});
-        };
-        kick();
-        video.addEventListener("canplay", kick);
-      }
-      // Pause orb spin briefly on node focus for accessibility / readability
-      var orb = document.querySelector('.gate-orb');
-      if (!orb) return;
-      var nodes = document.querySelectorAll('.gate-node');
-      nodes.forEach(function (n) {
-        n.addEventListener('focus', function () { orb.style.animationPlayState = 'paused'; });
-        n.addEventListener('blur', function () { orb.style.animationPlayState = 'running'; });
-        n.addEventListener('mouseenter', function () { orb.style.animationPlayState = 'paused'; });
-        n.addEventListener('mouseleave', function () { orb.style.animationPlayState = 'running'; });
-      });
-    })();
-  </script>
+<video class="bg" autoplay muted loop playsinline poster="https://cdn.jsdelivr.net/gh/tigerwillca/reynard-soft7-sepolia@main/soft7-bg-key-01.png" aria-hidden="true">
+<source src="https://cdn.jsdelivr.net/gh/tigerwillca/reynard-soft7-sepolia@main/soft7-bg-loop.webm" type="video/webm"/>
+<source src="https://cdn.jsdelivr.net/gh/tigerwillca/reynard-soft7-sepolia@main/soft7-bg-loop.mp4" type="video/mp4"/>
+</video>
+<div class="veil" aria-hidden="true"></div>
+<div class="wrap">
+<div class="banner">Live · Robinhood Chain 4663 · Built to give back</div>
+<header>
+<div class="hero"><img src="https://cdn.jsdelivr.net/gh/tigerwillca/reynard-soft7-sepolia@main/soft7-mascot-hero.jpg" width="853" height="1280" alt="Reynard Soft7 mascot — fox in purple hooded robe and mask"/></div>
+<p class="eyebrow">The Globe · SoftReynard7 · Mask Depth</p>
+<h1>Reynard Soft7</h1>
+<p class="lede">Seven cards on Robinhood Chain. This project gives back — a clear cut of every secondary sale, paid on-chain to Soft7 holders.</p>
+<div class="ctas">
+<a class="btn primary" href="#giveback">How giveback works</a>
+<a class="btn" href="https://opensea.io/collection/reynard-soft7">OpenSea</a>
+<a class="btn" href="https://robinhoodchain.blockscout.com/address/0x73D7b2611509C14078e16f572bE5aC7D91879DC2">Blockscout</a>
+<a class="btn" href="https://x.com/tigerwillca">@tigerwillca</a>
+</div>
+</header>
+<section class="card giveback" id="giveback">
+<h2>This project gives back</h2>
+<p>Secondary trading funds Soft7 holders directly. No points. No off-chain scoreboard. Anyone can check the math on-chain.</p>
+<div class="math">
+<div class="stat"><span class="num">1.5%</span><span class="label">of every secondary sale price flows into the Soft7 giveback vault</span></div>
+<div class="stat"><span class="num">Quarterly</span><span class="label">vault pays ETH pro-rata to holders of Soft7 tokens 1–7</span></div>
+<div class="stat"><span class="num">On-chain</span><span class="label">snapshot + payouts verifiable on Robinhood Chain Blockscout</span></div>
+</div>
+<p class="note">Full creator fee stays <strong>7.5%</strong> on secondary sales. Of that stream, <strong>80%</strong> supports the creator (@tigerwillca) and <strong>20%</strong> funds the vault.</p>
+<p class="status">Status · <span>Soft7 live on RH · giveback landing live</span></p>
+</section>
+<section class="card">
+<h2>Contract</h2>
+<p class="mono">0x73D7b2611509C14078e16f572bE5aC7D91879DC2</p>
+<p class="note">Reynard Soft7 · SOFT7 · supply 7 · Robinhood Chain 4663</p>
+</section>
+<section class="card">
+<h2>Cards 1–7</h2>
+<div class="grid">
+<figure><img src="./images/033.jpg" alt="Soft7 #1" loading="lazy"/><figcaption>#1 · 033</figcaption></figure>
+<figure><img src="./images/034.jpg" alt="Soft7 #2" loading="lazy"/><figcaption>#2 · 034</figcaption></figure>
+<figure><img src="./images/035.jpg" alt="Soft7 #3" loading="lazy"/><figcaption>#3 · 035</figcaption></figure>
+<figure><img src="./images/036.jpg" alt="Soft7 #4" loading="lazy"/><figcaption>#4 · 036</figcaption></figure>
+<figure><img src="./images/037.jpg" alt="Soft7 #5" loading="lazy"/><figcaption>#5 · 037</figcaption></figure>
+<figure><img src="./images/038.jpg" alt="Soft7 #6" loading="lazy"/><figcaption>#6 · 038</figcaption></figure>
+<figure><img src="./images/039.jpg" alt="Soft7 #7" loading="lazy"/><figcaption>#7 · 039</figcaption></figure>
+</div>
+</section>
+<footer>Built on Robinhood Chain · not a Robinhood product<br/>Soft7 gives back · Prefer https://tigerwillca.github.io/</footer>
+</div>
 </body>
 </html>
