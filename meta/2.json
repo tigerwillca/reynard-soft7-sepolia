@@ -1,6 +1,6 @@
 {
   "name": "Reynard Soft7 #2 (Art 034)",
-  "description": "Seventh Gate / Reynard soft-launch card. Art slot 034. Sepolia testnet only.",
+  "description": "Reynard Soft7 on Robinhood Chain mainnet. SoftReynard7 card from The Seventh Gate. Art slot 034. Supply 7.",
   "image": "https://cdn.jsdelivr.net/gh/tigerwillca/reynard-soft7-sepolia@ae7d304699989b945bfe8c0f4225f3a7fc952f83/images/034.jpg",
   "external_url": "https://github.com/tigerwillca/reynard-soft7-sepolia",
   "attributes": [
@@ -14,7 +14,11 @@
     },
     {
       "trait_type": "Network",
-      "value": "Sepolia"
+      "value": "Robinhood Chain"
+    },
+    {
+      "trait_type": "Chain ID",
+      "value": "4663"
     },
     {
       "trait_type": "Drop",
