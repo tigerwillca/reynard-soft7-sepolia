@@ -22,12 +22,11 @@ Built on Robinhood Chain · not a Robinhood product.
 
 ## GitHub Pages
 
-Pages is not enabled on this repository yet. Turn it on once:
+`.github/workflows/pages.yml` publishes the repository root (`/`) on every push to `main`. The workflow asks GitHub to enable Pages on the first run (`enablement: true`) and deploy with **GitHub Actions**.
 
-1. Open **Settings → Pages**.
-2. Under **Build and deployment**, set **Source** to **GitHub Actions**.
+If that run cannot create the site, turn Pages on once: **Settings → Pages → Build and deployment → Source: GitHub Actions**. Do not choose the `/docs` folder.
 
-`.github/workflows/pages.yml` publishes the repository root (`/`) on every push to `main`, and when the workflow is run by hand. After that setting is saved, the site is:
+After a successful deploy, the site is:
 
 https://tigerwillca.github.io/reynard-soft7-sepolia/
 
