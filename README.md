@@ -17,7 +17,7 @@ The repository name stays `reynard-soft7-sepolia`.
 | Mainnet announcement | https://x.com/tigerwillca/status/2103414595930968299 |
 | Deployer | `0x86dF4D2fAA9aC25D408AA4E4Fb890B9918c5f066` |
 
-`index.html` is the public landing: Mask Depth Reynard hero (`soft7-mascot-hero.png`), a full-page forest loop (`soft7-bg-loop.webm` / `.mp4`, poster `soft7-bg-key-01.png`), and cards 1–7 at `#the-seven`. Card art is `images/033.jpg`–`images/039.jpg`. Token metadata is `meta/1.json`–`meta/7.json`. Collection metadata for the OpenSea editor is `meta/collection.json`.
+`index.html` is the public landing. The hero is the Mask Depth banner `mask-depth-reynard/1.jpg` (853×1280), with a full-page forest loop (`soft7-bg-loop.webm` / `.mp4`, poster `soft7-bg-key-01.png`) and cards 1–7 at `#the-seven`. Card art is `images/033.jpg`–`images/039.jpg`. Token metadata is `meta/1.json`–`meta/7.json`. Collection metadata for the OpenSea editor is `meta/collection.json`.
 
 The live site today is [tigerwillca.github.io](https://tigerwillca.github.io/) (the user Pages repo). This repo’s project Pages site is not created yet.
 
@@ -43,7 +43,7 @@ If you would rather publish without Actions, set **Source** to **Deploy from a b
 
 `meta/collection.json` is the collection record for the OpenSea editor (logo, banner, site, 750 bps to the royalty router). The contract has no `contractURI()`.
 
-Mask Depth / Reynard Prime (`mask-depth-reynard/1.jpg`) is still the placeholder string `PLACEHOLDER_WILL_REPLACE`. The locked PNG named in `mask-depth-reynard/README.md` is not in this repository, so that 1/1 is not ready to list.
+`mask-depth-reynard/1.jpg` is the 853×1280 Mask Depth banner (commit `cad54c6`). `mask-depth-reynard/1.json` and `reynard-prime/meta/0.json` both use that pinned image. The full locked PNG named in `mask-depth-reynard/README.md` is still not in this repository. Those two JSON files still describe different tokens (Mask Depth versus Reynard Prime).
 
 ## Earlier soft gate
 

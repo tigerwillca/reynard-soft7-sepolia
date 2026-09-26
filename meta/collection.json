@@ -1,7 +1,7 @@
 {
   "name": "Reynard Soft7",
   "description": "Seven cards on Robinhood Chain (chain ID 4663). Symbol SOFT7. Supply 7. Secondary sales pay a 7.5% creator fee to the Soft7 royalty router; 1.5% of the sale price is paid quarterly on-chain to holders of tokens 1\u20137. Built on Robinhood Chain, not a Robinhood product.",
-  "image": "https://cdn.jsdelivr.net/gh/tigerwillca/reynard-soft7-sepolia@6eda9315087faa877d5633a700f3005bd02a5aeb/soft7-mascot-hero.jpg",
+  "image": "https://cdn.jsdelivr.net/gh/tigerwillca/reynard-soft7-sepolia@cad54c68507db747177dc3801e086c9505221b15/mask-depth-reynard/1.jpg",
   "banner_image": "https://cdn.jsdelivr.net/gh/tigerwillca/reynard-soft7-sepolia@6eda9315087faa877d5633a700f3005bd02a5aeb/soft7-bg-key-01.png",
   "external_link": "https://tigerwillca.github.io/",
   "seller_fee_basis_points": 750,

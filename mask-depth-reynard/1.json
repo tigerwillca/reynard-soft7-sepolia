@@ -1,7 +1,7 @@
 {
   "name": "Mask Depth Reynard",
   "description": "Apex 1-of-1 of the Soft7 Universe. With the Fox and with Robinhood, Reynard is giving back. Distinct from Soft7 tokens 1\u20137 (closed supply on SoftReynard7RH). Highest tier: Mask Depth. 7.5% ERC-2981 royalty feeds Soft7 giveback path.",
-  "image": "https://cdn.jsdelivr.net/gh/tigerwillca/reynard-soft7-sepolia@main/mask-depth-reynard/1.jpg",
+  "image": "https://cdn.jsdelivr.net/gh/tigerwillca/reynard-soft7-sepolia@cad54c68507db747177dc3801e086c9505221b15/mask-depth-reynard/1.jpg",
   "external_url": "https://github.com/tigerwillca/reynard-soft7-sepolia",
   "attributes": [
     { "trait_type": "Tier", "value": "Apex / Mask Depth" },
