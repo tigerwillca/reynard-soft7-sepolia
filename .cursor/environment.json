@@ -2,5 +2,10 @@
   "name": "reynard-soft7-sepolia",
   "install": "python3 scripts/validate_metadata.py",
   "start": "bash scripts/start_server.sh",
-  "ports": [8000]
+  "ports": [
+    {
+      "name": "metadata",
+      "port": 8000
+    }
+  ]
 }
