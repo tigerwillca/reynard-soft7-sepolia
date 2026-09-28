@@ -23,7 +23,10 @@ a{color:var(--gold)}
 .bg{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:saturate(1.15)contrast(1.05)brightness(.55)}
 .veil{position:fixed;inset:0;z-index:-1;background:radial-gradient(ellipse 80% 55% at 50% -10%,rgba(90,40,160,.42),transparent 60%),linear-gradient(180deg,rgba(7,5,15,.55),rgba(7,5,15,.92))}
 .wrap{width:min(100% - 2rem,56rem);margin:0 auto;padding:2rem 0 4rem}
-.banner{border:1px solid var(--line);background:rgba(107,63,160,.18);color:var(--gold);font:700 .72rem/1.4 ui-monospace,Menlo,monospace;letter-spacing:.14em;text-transform:uppercase;text-align:center;padding:.75rem 1rem;margin-bottom:2rem;border-radius:8px}
+.banner{border:1px solid var(--line);background:rgba(107,63,160,.18);color:var(--gold);font:700 .72rem/1.4 ui-monospace,Menlo,monospace;letter-spacing:.14em;text-transform:uppercase;text-align:center;padding:.75rem 1rem;margin-bottom:1rem;border-radius:8px}
+.phoenix{display:block;margin:0 0 1.25rem;border-radius:12px;overflow:hidden;border:1px solid var(--line);box-shadow:0 0 32px rgba(240,140,40,.18)}
+.phoenix img{display:block;width:100%;height:auto;aspect-ratio:1400/400;object-fit:cover}
+.loop-credit{margin:.35rem 0 0;color:var(--gold);font:700 .72rem/1.4 ui-monospace,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase}
 header{text-align:center}
 .hero{width:min(100%,22rem);margin:0 auto 1.5rem;border-radius:16px;border:1px solid rgba(155,109,255,.35);overflow:hidden;background:#0a0614;box-shadow:0 0 40px rgba(155,109,255,.22)}
 .hero img{display:block;width:100%;height:auto;aspect-ratio:853/1280;object-fit:cover;object-position:center top}
@@ -45,6 +48,7 @@ h1{margin:.5rem 0 .75rem;font-weight:500;font-size:clamp(1.8rem,6vw,2.8rem);lett
 .mono{font:700 .78rem/1.4 ui-monospace,Menlo,monospace;word-break:break-all;color:var(--gold)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(7.5rem,1fr));gap:.75rem}
 .grid figure{margin:0;text-align:center}
+.grid a{color:inherit;text-decoration:none}
 .grid img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:8px;border:1px solid var(--line);background:#0a0614}
 .grid figcaption{font-size:.72rem;color:var(--muted);margin-top:.35rem}
 footer{margin-top:2.5rem;text-align:center;font-size:.8rem;color:var(--muted)}
@@ -54,16 +58,18 @@ footer{margin-top:2.5rem;text-align:center;font-size:.8rem;color:var(--muted)}
 </style>
 </head>
 <body>
-<video class="bg" autoplay muted loop playsinline poster="soft7-bg-key-01.png" aria-hidden="true">
+<video class="bg" autoplay muted loop playsinline poster="soft7-bg-key-01.png" aria-label="Staking loop: Fox and @tigerwillca">
 <source src="soft7-bg-loop.webm" type="video/webm"/>
 <source src="soft7-bg-loop.mp4" type="video/mp4"/>
 </video>
 <div class="veil" aria-hidden="true"></div>
 <div class="wrap">
+<a class="phoenix" href="https://opensea.io/collection/reynard-soft7"><img src="phoenix-banner.gif" width="1400" height="400" alt="Animated phoenix banner for the Reynard Soft7 OpenSea collection"/></a>
 <div class="banner">Live · Robinhood Chain 4663 · Built to give back</div>
 <header>
 <div class="hero"><img src="mask-depth-reynard/1.jpg" width="853" height="1280" alt="Mask Depth Reynard — fox in a purple mask and robe, lime flask, banner REYNARD MASK DEPTH"/></div>
 <p class="eyebrow">The Globe · SoftReynard7 · Mask Depth</p>
+<p class="loop-credit">Staking loop · Fox · <a href="https://x.com/tigerwillca">@tigerwillca</a></p>
 <h1>Reynard Soft7</h1>
 <p class="lede">Seven cards on Robinhood Chain. This project gives back — a clear cut of every secondary sale, paid on-chain to Soft7 holders.</p>
 <div class="ctas">
@@ -92,14 +98,15 @@ footer{margin-top:2.5rem;text-align:center;font-size:.8rem;color:var(--muted)}
 </section>
 <section class="card" id="the-seven">
 <h2>Cards 1–7</h2>
+<p class="note">Final art on Soft7 tokens 1–7. Art slots 033–039.</p>
 <div class="grid">
-<figure><img src="images/033.jpg" alt="Soft7 #1" loading="lazy"/><figcaption>#1 · 033</figcaption></figure>
-<figure><img src="images/034.jpg" alt="Soft7 #2" loading="lazy"/><figcaption>#2 · 034</figcaption></figure>
-<figure><img src="images/035.jpg" alt="Soft7 #3" loading="lazy"/><figcaption>#3 · 035</figcaption></figure>
-<figure><img src="images/036.jpg" alt="Soft7 #4" loading="lazy"/><figcaption>#4 · 036</figcaption></figure>
-<figure><img src="images/037.jpg" alt="Soft7 #5" loading="lazy"/><figcaption>#5 · 037</figcaption></figure>
-<figure><img src="images/038.jpg" alt="Soft7 #6" loading="lazy"/><figcaption>#6 · 038</figcaption></figure>
-<figure><img src="images/039.jpg" alt="Soft7 #7" loading="lazy"/><figcaption>#7 · 039</figcaption></figure>
+<figure><a href="https://opensea.io/assets/robinhood/0x73D7b2611509C14078e16f572bE5aC7D91879DC2/1"><img src="images/033.jpg" alt="Soft7 #1 final art 033" loading="lazy"/><figcaption>#1 · 033</figcaption></a></figure>
+<figure><a href="https://opensea.io/assets/robinhood/0x73D7b2611509C14078e16f572bE5aC7D91879DC2/2"><img src="images/034.jpg" alt="Soft7 #2 final art 034" loading="lazy"/><figcaption>#2 · 034</figcaption></a></figure>
+<figure><a href="https://opensea.io/assets/robinhood/0x73D7b2611509C14078e16f572bE5aC7D91879DC2/3"><img src="images/035.jpg" alt="Soft7 #3 final art 035" loading="lazy"/><figcaption>#3 · 035</figcaption></a></figure>
+<figure><a href="https://opensea.io/assets/robinhood/0x73D7b2611509C14078e16f572bE5aC7D91879DC2/4"><img src="images/036.jpg" alt="Soft7 #4 final art 036" loading="lazy"/><figcaption>#4 · 036</figcaption></a></figure>
+<figure><a href="https://opensea.io/assets/robinhood/0x73D7b2611509C14078e16f572bE5aC7D91879DC2/5"><img src="images/037.jpg" alt="Soft7 #5 final art 037" loading="lazy"/><figcaption>#5 · 037</figcaption></a></figure>
+<figure><a href="https://opensea.io/assets/robinhood/0x73D7b2611509C14078e16f572bE5aC7D91879DC2/6"><img src="images/038.jpg" alt="Soft7 #6 final art 038" loading="lazy"/><figcaption>#6 · 038</figcaption></a></figure>
+<figure><a href="https://opensea.io/assets/robinhood/0x73D7b2611509C14078e16f572bE5aC7D91879DC2/7"><img src="images/039.jpg" alt="Soft7 #7 final art 039" loading="lazy"/><figcaption>#7 · 039</figcaption></a></figure>
 </div>
 </section>
 <footer>Built on Robinhood Chain · not a Robinhood product<br/>Soft7 gives back · <a href="https://tigerwillca.github.io/">tigerwillca.github.io</a></footer>
