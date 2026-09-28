@@ -6,8 +6,7 @@ The repository name stays `reynard-soft7-sepolia`.
 
 | | |
 | --- | --- |
-| Landing (live) | https://tigerwillca.github.io/ |
-| Project Pages | https://tigerwillca.github.io/reynard-soft7-sepolia/ (404 until Pages is created in Settings) |
+| Landing | https://tigerwillca.github.io/reynard-soft7-sepolia/ |
 | Contract | `0x73D7b2611509C14078e16f572bE5aC7D91879DC2` |
 | Name / symbol / supply | Reynard Soft7 / SOFT7 / 7 |
 | OpenSea | https://opensea.io/collection/reynard-soft7 |
@@ -19,23 +18,21 @@ The repository name stays `reynard-soft7-sepolia`.
 
 `index.html` is the public landing. The hero is the Mask Depth banner `mask-depth-reynard/1.jpg` (853×1280), with a full-page forest loop (`soft7-bg-loop.webm` / `.mp4`, poster `soft7-bg-key-01.png`) and cards 1–7 at `#the-seven`. Card art is `images/033.jpg`–`images/039.jpg`. Token metadata is `meta/1.json`–`meta/7.json`. Collection metadata for the OpenSea editor is `meta/collection.json`.
 
-The live site today is [tigerwillca.github.io](https://tigerwillca.github.io/) (the user Pages repo). This repo’s project Pages site is not created yet.
+The public site for this repository is [tigerwillca.github.io/reynard-soft7-sepolia](https://tigerwillca.github.io/reynard-soft7-sepolia/).
 
 Built on Robinhood Chain · not a Robinhood product.
 
 ## GitHub Pages
 
-`.github/workflows/pages.yml` publishes the repository root (`/`) on every push to `main`. The workflow asks GitHub to enable Pages on the first run (`enablement: true`) and deploy with **GitHub Actions**.
+`.github/workflows/pages.yml` publishes an allowlisted public directory on every push to `main`. `scripts/assemble_public_site.sh` builds that directory from the landing page, token metadata, card art, and hero media. The workflow asks GitHub to enable Pages on the first run (`enablement: true`) and deploy with **GitHub Actions**.
 
-Creating the site from Actions fails with `Resource not accessible by integration` (`enablement: true` cannot call the Pages API for this repository). Turn Pages on once: **Settings → Pages → Build and deployment → Source: GitHub Actions**. Do not choose the `/docs` folder. Until that exists, OpenSea `external_url` and the canonical link use `https://tigerwillca.github.io/`, which already serves the landing.
+Creating the site from Actions fails with `Resource not accessible by integration` (`enablement: true` cannot call the Pages API for this repository). Turn Pages on once: **Settings → Pages → Build and deployment → Source: GitHub Actions**. Do not choose the `/docs` folder, and do not deploy the repository root. A root deploy would publish agent config and scripts along with the site.
 
-After a successful deploy, the site is:
+Token `external_url`, collection `external_link`, and the landing canonical URL use:
 
 https://tigerwillca.github.io/reynard-soft7-sepolia/
 
-Leave the Pages folder off `/docs`. That path only sends people to the root landing.
-
-If you would rather publish without Actions, set **Source** to **Deploy from a branch**, branch **`main`**, folder **`/ (root)`**, and do that instead of GitHub Actions. The workflow above is the setup this repo expects. A `.nojekyll` file is at the repo root so a branch deploy serves the files as-is.
+Leave the Pages folder off `/docs`. That path only sends people to the project landing. A `.nojekyll` file is included in the published directory so Pages serves the files as-is.
 
 ## OpenSea metadata
 
@@ -43,7 +40,7 @@ If you would rather publish without Actions, set **Source** to **Deploy from a b
 
 `meta/collection.json` is the collection record for the OpenSea editor (logo, banner, site, 750 bps to the royalty router). The contract has no `contractURI()`.
 
-`mask-depth-reynard/1.jpg` is the 853×1280 Mask Depth banner (commit `cad54c6`). `mask-depth-reynard/1.json` and `reynard-prime/meta/0.json` both use that pinned image. The full locked PNG named in `mask-depth-reynard/README.md` is still not in this repository. Those two JSON files still describe different tokens (Mask Depth versus Reynard Prime).
+`mask-depth-reynard/1.jpg` is the 853×1280 Mask Depth banner (commit `cad54c6`). `mask-depth-reynard/1.json` and `reynard-prime/meta/0.json` both use that pinned image. The full locked PNG is not in this repository. Those two JSON files still describe different tokens (Mask Depth versus Reynard Prime).
 
 ## Earlier soft gate
 
