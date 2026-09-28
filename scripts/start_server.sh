@@ -2,16 +2,22 @@
 # Start the static metadata server that serves meta/*.json and images/* over
 # HTTP, the way a wallet or marketplace fetches ERC-721 token metadata.
 #
-# Runs on every environment boot (the `start` phase). It is idempotent: if the
-# server is already listening it returns immediately, otherwise it launches the
-# server in the background, waits for readiness, and returns.
+# Runs on every environment boot (the `start` phase). It is idempotent: if
+# /meta/1.json is already being served it returns immediately, otherwise it
+# launches the server in the background, waits for that metadata, and returns.
 set -euo pipefail
 
 PORT="${METADATA_SERVER_PORT:-8000}"
 LOG="/tmp/metadata-server.log"
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
-if curl -sf -o /dev/null "http://127.0.0.1:${PORT}/" 2>/dev/null; then
+metadata_ready() {
+  local body
+  body="$(curl -sf "http://127.0.0.1:${PORT}/meta/1.json" 2>/dev/null)" || return 1
+  python3 -c 'import json,sys; data=json.loads(sys.argv[1]); name=data.get("name"); raise SystemExit(0 if isinstance(name, str) and name.strip() else 1)' "$body"
+}
+
+if metadata_ready; then
   echo "metadata-server already listening on :${PORT}"
   exit 0
 fi
@@ -21,7 +27,7 @@ nohup python3 -m http.server "$PORT" --bind 0.0.0.0 >"$LOG" 2>&1 &
 server_pid=$!
 
 for _ in $(seq 1 40); do
-  if curl -sf -o /dev/null "http://127.0.0.1:${PORT}/"; then
+  if metadata_ready; then
     echo "metadata-server ready on :${PORT} (pid ${server_pid}), serving ${REPO_ROOT}"
     exit 0
   fi
