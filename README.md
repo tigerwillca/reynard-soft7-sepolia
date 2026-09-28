@@ -25,7 +25,7 @@ Built on Robinhood Chain · not a Robinhood product.
 
 ## GitHub Pages
 
-`.github/workflows/pages.yml` publishes the repository root (`/`) on every push to `main`. The workflow asks GitHub to enable Pages on the first run (`enablement: true`) and deploy with **GitHub Actions**.
+`.github/workflows/pages.yml` publishes an allowlisted `_site` directory on every push to `main`. `scripts/assemble_public_site.sh` builds that directory from the landing, token metadata, and art. The workflow asks GitHub to enable Pages on the first run (`enablement: true`) and deploy with **GitHub Actions**. `.git`, `.github`, `.cursor`, and `scripts/` are not in the upload.
 
 Creating the site from Actions fails with `Resource not accessible by integration` (`enablement: true` cannot call the Pages API for this repository). Turn Pages on once: **Settings → Pages → Build and deployment → Source: GitHub Actions**. Do not choose the `/docs` folder. Until that exists, OpenSea `external_url` and the canonical link use `https://tigerwillca.github.io/`, which already serves the landing.
 
@@ -33,9 +33,9 @@ After a successful deploy, the site is:
 
 https://tigerwillca.github.io/reynard-soft7-sepolia/
 
-Leave the Pages folder off `/docs`. That path only sends people to the root landing.
+Leave the Pages folder off `/docs`. That path only sends people to the root landing. Do not deploy the repository root either. A root publish includes `.cursor/` and `scripts/`.
 
-If you would rather publish without Actions, set **Source** to **Deploy from a branch**, branch **`main`**, folder **`/ (root)`**, and do that instead of GitHub Actions. The workflow above is the setup this repo expects. A `.nojekyll` file is at the repo root so a branch deploy serves the files as-is.
+The local metadata server uses the same allowlist. `scripts/start_server.sh` binds `127.0.0.1` and serves the copy under `/tmp/metadata-public`. `METADATA_SERVER_PORT` has to be an integer from 1 to 65535. A process that still answers `/.git/HEAD` is not treated as ready.
 
 ## OpenSea metadata
 
