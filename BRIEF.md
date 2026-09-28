@@ -28,7 +28,7 @@ The potion is the engine. Color arrives in this order, slowly: the amulet catche
 
 Clothing and the belt are incorporated. They are silent details, not loud ones.
 
-Tigers are thin and lean, with no fat, in a Star Wars Jedi or wizard pose, on the stark side, with no extra colors. The tiger proof is tier 3, Pale Lock eyes, one gold brow tick, gold only as the faint amulet.
+Tigers are thin and lean, with no fat, in a Star Wars Jedi or wizard pose, on the stark side, with no extra colors. The first tier 3 proof read as bulky. It was redrawn once after that read. The file in `proofs/art/03.png` is the lean pass: narrow waist, Pale Lock eyes, one gold brow tick, gold only as the faint amulet. Do not draw the tiger again unless the approver asks.
 
 Foxes are the pristine mascot, on the colorful side, full body visible, nothing cropped. All characters are centered, eyes locked on the viewer, feet on solid ground, in a dynamic Star Wars figure stance.
 
