@@ -22,7 +22,7 @@
 a{color:var(--gold)}
 .bg{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:saturate(1.15)contrast(1.05)brightness(.55)}
 .veil{position:fixed;inset:0;z-index:-1;background:radial-gradient(ellipse 80% 55% at 50% -10%,rgba(90,40,160,.42),transparent 60%),linear-gradient(180deg,rgba(7,5,15,.55),rgba(7,5,15,.92))}
-.wrap{width:min(100% - 2rem,56rem);margin:0 auto;padding:2rem 0 4rem}
+.wrap{width:min(100% - 2rem,56rem);margin:0 auto;padding:2rem 0 5.5rem}
 .banner{border:1px solid var(--line);background:rgba(107,63,160,.18);color:var(--gold);font:700 .72rem/1.4 ui-monospace,Menlo,monospace;letter-spacing:.14em;text-transform:uppercase;text-align:center;padding:.75rem 1rem;margin-bottom:2rem;border-radius:8px}
 header{text-align:center}
 .hero{width:min(100%,22rem);margin:0 auto 1.5rem;border-radius:16px;border:1px solid rgba(155,109,255,.35);overflow:hidden;background:#0a0614;box-shadow:0 0 40px rgba(155,109,255,.22)}
@@ -43,10 +43,17 @@ h1{margin:.5rem 0 .75rem;font-weight:500;font-size:clamp(1.8rem,6vw,2.8rem);lett
 .stat .num{font:700 1.35rem/1.2 ui-monospace,Menlo,monospace;color:var(--lime)}
 .stat .label{display:block;margin-top:.35rem;font-size:.8rem;color:var(--muted)}
 .mono{font:700 .78rem/1.4 ui-monospace,Menlo,monospace;word-break:break-all;color:var(--gold)}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(7.5rem,1fr));gap:.75rem}
-.grid figure{margin:0;text-align:center}
-.grid img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:8px;border:1px solid var(--line);background:#0a0614}
-.grid figcaption{font-size:.72rem;color:var(--muted);margin-top:.35rem}
+.grid{display:flex;flex-wrap:wrap;justify-content:center;gap:.9rem}
+.token{display:block;width:calc(50% - .45rem);max-width:11.5rem;text-decoration:none;color:inherit;text-align:center}
+.token img{display:block;width:100%;height:auto;aspect-ratio:682/1024;object-fit:cover;object-position:center top;border-radius:12px;border:1px solid var(--line);background:#0a0614;box-shadow:0 10px 28px rgba(0,0,0,.35)}
+.token-id{display:block;margin-top:.45rem;font-size:.82rem;color:var(--gold)}
+.token-meta{display:block;font-size:.68rem;color:var(--muted)}
+.mintbar{display:block;position:fixed;left:.75rem;right:.75rem;bottom:.75rem;z-index:5;text-align:center;padding:.85rem 1rem;border-radius:999px;text-decoration:none;font-weight:700;letter-spacing:.04em;color:#10140a;background:var(--lime);box-shadow:0 8px 24px rgba(0,0,0,.45)}
+@media(min-width:800px){
+  .token{width:11.5rem}
+  .mintbar{display:none}
+  .wrap{padding-bottom:4rem}
+}
 footer{margin-top:2.5rem;text-align:center;font-size:.8rem;color:var(--muted)}
 .note{font-size:.85rem;color:var(--muted)}
 .status{margin-top:1rem;padding-top:1rem;border-top:1px solid var(--line);font:700 .72rem/1.4 ui-monospace,Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
@@ -67,13 +74,26 @@ footer{margin-top:2.5rem;text-align:center;font-size:.8rem;color:var(--muted)}
 <h1>Reynard Soft7</h1>
 <p class="lede">Seven cards on Robinhood Chain. This project gives back — a clear cut of every secondary sale, paid on-chain to Soft7 holders.</p>
 <div class="ctas">
-<a class="btn primary" href="#giveback">How giveback works</a>
-<a class="btn" href="#the-seven">Cards 1–7</a>
-<a class="btn" href="https://opensea.io/collection/reynard-soft7">OpenSea</a>
+<a class="btn primary" href="https://opensea.io/collection/reynard-soft7">Open the collection</a>
+<a class="btn" href="#the-seven">The seven</a>
+<a class="btn" href="#giveback">How giveback works</a>
 <a class="btn" href="https://robinhoodchain.blockscout.com/address/0x73D7b2611509C14078e16f572bE5aC7D91879DC2">Blockscout</a>
 <a class="btn" href="https://x.com/tigerwillca">@tigerwillca</a>
 </div>
 </header>
+<section class="card" id="the-seven">
+<h2>The seven</h2>
+<p class="note">Supply is 7. These are the tokens. Each card opens that NFT on OpenSea.</p>
+<div class="grid">
+<a class="token" href="https://opensea.io/assets/robinhood/0x73D7b2611509C14078e16f572bE5aC7D91879DC2/1"><img src="images/033.jpg" width="682" height="1024" alt="Reynard Soft7 #1, art 033"/><span class="token-id">Soft7 #1</span><span class="token-meta">Art 033</span></a>
+<a class="token" href="https://opensea.io/assets/robinhood/0x73D7b2611509C14078e16f572bE5aC7D91879DC2/2"><img src="images/034.jpg" width="682" height="1024" alt="Reynard Soft7 #2, art 034"/><span class="token-id">Soft7 #2</span><span class="token-meta">Art 034</span></a>
+<a class="token" href="https://opensea.io/assets/robinhood/0x73D7b2611509C14078e16f572bE5aC7D91879DC2/3"><img src="images/035.jpg" width="682" height="1024" alt="Reynard Soft7 #3, art 035"/><span class="token-id">Soft7 #3</span><span class="token-meta">Art 035</span></a>
+<a class="token" href="https://opensea.io/assets/robinhood/0x73D7b2611509C14078e16f572bE5aC7D91879DC2/4"><img src="images/036.jpg" width="682" height="1024" alt="Reynard Soft7 #4, art 036"/><span class="token-id">Soft7 #4</span><span class="token-meta">Art 036</span></a>
+<a class="token" href="https://opensea.io/assets/robinhood/0x73D7b2611509C14078e16f572bE5aC7D91879DC2/5"><img src="images/037.jpg" width="682" height="1024" alt="Reynard Soft7 #5, art 037"/><span class="token-id">Soft7 #5</span><span class="token-meta">Art 037</span></a>
+<a class="token" href="https://opensea.io/assets/robinhood/0x73D7b2611509C14078e16f572bE5aC7D91879DC2/6"><img src="images/038.jpg" width="682" height="1024" alt="Reynard Soft7 #6, art 038"/><span class="token-id">Soft7 #6</span><span class="token-meta">Art 038</span></a>
+<a class="token" href="https://opensea.io/assets/robinhood/0x73D7b2611509C14078e16f572bE5aC7D91879DC2/7"><img src="images/039.jpg" width="682" height="1024" alt="Reynard Soft7 #7, art 039"/><span class="token-id">Soft7 #7</span><span class="token-meta">Art 039</span></a>
+</div>
+</section>
 <section class="card giveback" id="giveback">
 <h2>This project gives back</h2>
 <p>Secondary trading funds Soft7 holders directly. No points. No off-chain scoreboard. Anyone can check the math on-chain.</p>
@@ -90,19 +110,8 @@ footer{margin-top:2.5rem;text-align:center;font-size:.8rem;color:var(--muted)}
 <p class="mono">0x73D7b2611509C14078e16f572bE5aC7D91879DC2</p>
 <p class="note">Reynard Soft7 · SOFT7 · supply 7 · Robinhood Chain 4663</p>
 </section>
-<section class="card" id="the-seven">
-<h2>Cards 1–7</h2>
-<div class="grid">
-<figure><img src="images/033.jpg" alt="Soft7 #1" loading="lazy"/><figcaption>#1 · 033</figcaption></figure>
-<figure><img src="images/034.jpg" alt="Soft7 #2" loading="lazy"/><figcaption>#2 · 034</figcaption></figure>
-<figure><img src="images/035.jpg" alt="Soft7 #3" loading="lazy"/><figcaption>#3 · 035</figcaption></figure>
-<figure><img src="images/036.jpg" alt="Soft7 #4" loading="lazy"/><figcaption>#4 · 036</figcaption></figure>
-<figure><img src="images/037.jpg" alt="Soft7 #5" loading="lazy"/><figcaption>#5 · 037</figcaption></figure>
-<figure><img src="images/038.jpg" alt="Soft7 #6" loading="lazy"/><figcaption>#6 · 038</figcaption></figure>
-<figure><img src="images/039.jpg" alt="Soft7 #7" loading="lazy"/><figcaption>#7 · 039</figcaption></figure>
-</div>
-</section>
 <footer>Built on Robinhood Chain · not a Robinhood product<br/>Soft7 gives back · <a href="https://tigerwillca.github.io/">tigerwillca.github.io</a></footer>
 </div>
+<a class="mintbar" href="https://opensea.io/collection/reynard-soft7">Open the collection</a>
 </body>
 </html>
