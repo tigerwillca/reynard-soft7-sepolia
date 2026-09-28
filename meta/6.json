@@ -5,24 +5,24 @@
   "external_url": "https://tigerwillca.github.io/",
   "attributes": [
     {
-      "trait_type": "Art Slot",
+      "trait_type": "Tier",
+      "value": "Sixth Gate"
+    },
+    {
+      "trait_type": "Color",
+      "value": "Amber"
+    },
+    {
+      "trait_type": "Eyes",
+      "value": "Amber"
+    },
+    {
+      "trait_type": "Signature",
       "value": "038"
     },
     {
-      "trait_type": "Species",
-      "value": "Fox / Reynard"
-    },
-    {
-      "trait_type": "Network",
-      "value": "Robinhood Chain"
-    },
-    {
-      "trait_type": "Chain ID",
-      "value": "4663"
-    },
-    {
-      "trait_type": "Drop",
-      "value": "Soft7"
+      "trait_type": "Globe",
+      "value": "The Globe"
     }
   ]
 }
