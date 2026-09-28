@@ -1,27 +1,69 @@
-# Deploys the repository root to GitHub Pages.
+# Validates Soft7 metadata, then deploys the repository root to GitHub Pages
+# when the site already exists. The Actions token cannot create the site.
 # One-time: Settings → Pages → Source: GitHub Actions.
 name: Deploy Soft7 Pages
 
 on:
   push:
     branches: [main]
+  pull_request:
   workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
   group: pages
   cancel-in-progress: false
 
 jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Validate metadata
+        run: python3 scripts/validate_metadata.py
+
+  detect:
+    needs: validate
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+    outputs:
+      enabled: ${{ steps.site.outputs.enabled }}
+    steps:
+      - name: Detect Pages site
+        id: site
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          code="$(curl -sS -o /tmp/pages.json -w '%{http_code}' \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/pages")"
+          if [ "$code" = "200" ]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+            echo "GitHub Pages site is present."
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::GitHub Pages is not enabled (HTTP ${code}). Settings → Pages → Source: GitHub Actions. Metadata was validated; this run does not deploy."
+          fi
+
   deploy:
+    needs: detect
+    if: needs.detect.outputs.enabled == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -30,7 +72,6 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Repository root, including index.html and images/
           path: .
       - name: Deploy to GitHub Pages
         id: deployment

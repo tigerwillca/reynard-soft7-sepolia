@@ -25,9 +25,9 @@ Built on Robinhood Chain · not a Robinhood product.
 
 ## GitHub Pages
 
-`.github/workflows/pages.yml` publishes the repository root (`/`) on every push to `main` and deploys with **GitHub Actions**.
+`.github/workflows/pages.yml` checks `meta/*.json` on every push to `main`. When GitHub Pages is already enabled with **Source: GitHub Actions**, that workflow deploys the repository root. The Actions token cannot create the Pages site, so a missing site does not fail the metadata check.
 
-The Actions `GITHUB_TOKEN` cannot create a Pages site (`Resource not accessible by integration`). Turn Pages on once: **Settings → Pages → Build and deployment → Source: GitHub Actions**. Do not choose the `/docs` folder. Until that exists, OpenSea `external_url` and the canonical link use `https://tigerwillca.github.io/`, which already serves the landing.
+Turn Pages on once: **Settings → Pages → Build and deployment → Source: GitHub Actions**. Do not choose the `/docs` folder. Until that exists, OpenSea `external_url` and the canonical link use `https://tigerwillca.github.io/`, which already serves the landing.
 
 After a successful deploy, the site is:
 
