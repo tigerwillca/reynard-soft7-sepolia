@@ -2,6 +2,8 @@
 
 **Reynard Soft7 (SOFT7)** is live on **Robinhood Chain mainnet** (chain ID **4663**). Supply **7**.
 
+The brief for the 777-card proofs is [`BRIEF.md`](BRIEF.md). Those proofs are not minted. The live supply is still 7, and the live images are still the JPEG tests, which is why wallets have no media. Do not regenerate art or retry verification without reading that file.
+
 The repository name stays `reynard-soft7-sepolia`.
 
 | | |

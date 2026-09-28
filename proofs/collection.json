@@ -1,0 +1,11 @@
+{
+  "name": "Reynard Soft7",
+  "description": "reynard-soft7 mascot cards on robinhood chain. ten percent of every mint routes back to soft7 holders proportional to what they hold. stake your card, feed the treasury, pull when you're ready.",
+  "image": "proofs/art/01.png",
+  "banner_image": "proofs/art/banner.png",
+  "external_link": "https://tigerwillca.github.io/",
+  "discord_url": "https://discord.gg/tigerwillca",
+  "twitter_username": "tigerwillca",
+  "seller_fee_basis_points": 750,
+  "fee_recipient": "0xe53bdb2118585d5B2cD06a117d3A036AFA70677a"
+}
