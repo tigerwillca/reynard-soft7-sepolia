@@ -25,9 +25,9 @@ Built on Robinhood Chain · not a Robinhood product.
 
 ## GitHub Pages
 
-`.github/workflows/pages.yml` publishes the repository root (`/`) on every push to `main`. The workflow asks GitHub to enable Pages on the first run (`enablement: true`) and deploy with **GitHub Actions**.
+`.github/workflows/pages.yml` publishes the repository root (`/`) on every push to `main` and deploys with **GitHub Actions**.
 
-Creating the site from Actions fails with `Resource not accessible by integration` (`enablement: true` cannot call the Pages API for this repository). Turn Pages on once: **Settings → Pages → Build and deployment → Source: GitHub Actions**. Do not choose the `/docs` folder. Until that exists, OpenSea `external_url` and the canonical link use `https://tigerwillca.github.io/`, which already serves the landing.
+The Actions `GITHUB_TOKEN` cannot create a Pages site (`Resource not accessible by integration`). Turn Pages on once: **Settings → Pages → Build and deployment → Source: GitHub Actions**. Do not choose the `/docs` folder. Until that exists, OpenSea `external_url` and the canonical link use `https://tigerwillca.github.io/`, which already serves the landing.
 
 After a successful deploy, the site is:
 
