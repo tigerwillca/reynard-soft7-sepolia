@@ -41,7 +41,7 @@ If you would rather publish without Actions, set **Source** to **Deploy from a b
 
 `tokenURI(1)`–`tokenURI(7)` on `0x73D7b2611509C14078e16f572bE5aC7D91879DC2` are pinned to commit `3a049e2` (`meta/1.json`–`meta/7.json` on jsDelivr). The contract has `setBaseURI(string)` and no `setTokenURI`. After these metadata files are on `main`, the owner points `setBaseURI` at `https://cdn.jsdelivr.net/gh/tigerwillca/reynard-soft7-sepolia@<that-commit>/meta/` and refreshes the seven tokens on OpenSea. Image URLs stay on commit `ae7d304`.
 
-`meta/collection.json` is the collection record for the OpenSea editor (logo, banner, site, 750 bps to the royalty router). The contract has no `contractURI()`. The collection banner is the animated phoenix `phoenix-banner.gif` (1400×400), pinned at commit `ce2958f`. Cards 1–7 keep final art `images/033.jpg`–`images/039.jpg`. The landing staking loop is `soft7-bg-loop`, with Fox and @tigerwillca named on the page.
+`meta/collection.json` is the collection record for the OpenSea editor (logo, banner, site, 750 bps to the royalty router). The contract has no `contractURI()`. The collection banner is the animated phoenix `phoenix-banner.gif` (1400×400), pinned at commit `23d0998`. Cards 1–7 keep final art `images/033.jpg`–`images/039.jpg`. The landing staking loop is `soft7-bg-loop`, with Fox and @tigerwillca named on the page.
 
 `mask-depth-reynard/1.jpg` is the 853×1280 Mask Depth banner (commit `cad54c6`). `mask-depth-reynard/1.json` and `reynard-prime/meta/0.json` both use that pinned image. The full locked PNG named in `mask-depth-reynard/README.md` is still not in this repository. Those two JSON files still describe different tokens (Mask Depth versus Reynard Prime).
 
