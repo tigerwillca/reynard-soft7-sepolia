@@ -4,7 +4,7 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <meta name="theme-color" content="#0a0614"/>
-<meta name="description" content="Reynard Soft7 on Robinhood Chain — seven cards that give back. 1.5% of every secondary sale to Soft7 holders, paid quarterly on-chain."/>
+<meta name="description" content="Reynard Soft7 on Robinhood Chain — seven cards that give back. The Fox card locks FOX, the Tiger card locks tigerwillca, both burn to treasury, and rewards route to USDG and SpaceX."/>
 <link rel="canonical" href="https://tigerwillca.github.io/"/>
 <meta property="og:type" content="website"/>
 <meta property="og:title" content="Reynard Soft7 · Robinhood Chain"/>
@@ -47,6 +47,8 @@ h1{margin:.5rem 0 .75rem;font-weight:500;font-size:clamp(1.8rem,6vw,2.8rem);lett
 .grid figure{margin:0;text-align:center}
 .grid img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:8px;border:1px solid var(--line);background:#0a0614}
 .grid figcaption{font-size:.72rem;color:var(--muted);margin-top:.35rem}
+.grid figure.lock{outline:1px solid rgba(204,255,0,.45);border-radius:10px;padding:.35rem;background:rgba(204,255,0,.04)}
+.loop-link{color:inherit;text-decoration:none}
 footer{margin-top:2.5rem;text-align:center;font-size:.8rem;color:var(--muted)}
 .note{font-size:.85rem;color:var(--muted)}
 .status{margin-top:1rem;padding-top:1rem;border-top:1px solid var(--line);font:700 .72rem/1.4 ui-monospace,Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
@@ -54,7 +56,7 @@ footer{margin-top:2.5rem;text-align:center;font-size:.8rem;color:var(--muted)}
 </style>
 </head>
 <body>
-<video class="bg" autoplay muted loop playsinline poster="soft7-bg-key-01.png" aria-hidden="true">
+<video class="bg" autoplay muted loop playsinline poster="soft7-bg-key-01.png" aria-label="Staking loop. Fox card locks FOX. Tiger card locks tigerwillca. Both burn to treasury. Rewards route to USDG and SpaceX.">
 <source src="soft7-bg-loop.webm" type="video/webm"/>
 <source src="soft7-bg-loop.mp4" type="video/mp4"/>
 </video>
@@ -67,7 +69,8 @@ footer{margin-top:2.5rem;text-align:center;font-size:.8rem;color:var(--muted)}
 <h1>Reynard Soft7</h1>
 <p class="lede">Seven cards on Robinhood Chain. This project gives back — a clear cut of every secondary sale, paid on-chain to Soft7 holders.</p>
 <div class="ctas">
-<a class="btn primary" href="#giveback">How giveback works</a>
+<a class="btn primary" href="#staking-loop">Staking loop</a>
+<a class="btn" href="#giveback">How giveback works</a>
 <a class="btn" href="#the-seven">Cards 1–7</a>
 <a class="btn" href="https://opensea.io/collection/reynard-soft7">OpenSea</a>
 <a class="btn" href="https://robinhoodchain.blockscout.com/address/0x73D7b2611509C14078e16f572bE5aC7D91879DC2">Blockscout</a>
@@ -85,6 +88,16 @@ footer{margin-top:2.5rem;text-align:center;font-size:.8rem;color:var(--muted)}
 <p class="note">Full creator fee stays <strong>7.5%</strong> on secondary sales. Soft7 <code>royaltyInfo</code> points to Soft7RoyaltyRouter <span class="mono">0x64c00a1c2d354F66aD5660548098F7cA25CEeb38</span> (not raw to William). Router splits <strong>80%</strong> creator <span class="mono">0xe53bdb2118585d5b2cd06a117d3a036afa70677a</span> / <strong>20%</strong> vault <span class="mono">0x6B0E22d322c967DFBDB57D027cE53D1D32F7711A</span>.</p>
 <p class="status">Status · <span>Soft7 live RH4663 · royalty→router 80/20 · vault live · github.io Pages enable still needed</span></p>
 </section>
+<section class="card" id="staking-loop">
+<h2>Staking loop</h2>
+<p>The Fox card locks FOX. The Tiger card locks tigerwillca. Both locks burn to the Soft7 treasury. Rewards route to USDG and SpaceX.</p>
+<div class="math">
+<div class="stat"><span class="num">Fox · #1</span><span class="label">locks FOX · Reynard<br/><a class="mono" href="https://robinhoodchain.blockscout.com/token/0x387fbf7128868093D5E22A5528A5fC3D2BA8c9f5">0x387fbf7128868093D5E22A5528A5fC3D2BA8c9f5</a></span></div>
+<div class="stat"><span class="num">Tiger · #2</span><span class="label">locks tigerwillca · TIGER<br/><a class="mono" href="https://robinhoodchain.blockscout.com/token/0x316C19b923B19E57A281996bfb9f8e96b2DA6427">0x316C19b923B19E57A281996bfb9f8e96b2DA6427</a></span></div>
+<div class="stat"><span class="num">Burn</span><span class="label">both locks burn to treasury<br/><a class="mono" href="https://robinhoodchain.blockscout.com/address/0x6B0E22d322c967DFBDB57D027cE53D1D32F7711A">0x6B0E22d322c967DFBDB57D027cE53D1D32F7711A</a></span></div>
+</div>
+<p class="note">Rewards route to USDG <a class="mono" href="https://robinhoodchain.blockscout.com/token/0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168">0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168</a> and SpaceX (SPCX) <a class="mono" href="https://robinhoodchain.blockscout.com/token/0x4a0E65A3EcceC6dBe60AE065F2e7bb85Fae35eEa">0x4a0E65A3EcceC6dBe60AE065F2e7bb85Fae35eEa</a>. Loop record: <a href="staking-loop.json">staking-loop.json</a>.</p>
+</section>
 <section class="card">
 <h2>Contract</h2>
 <p class="mono">0x73D7b2611509C14078e16f572bE5aC7D91879DC2</p>
@@ -93,8 +106,8 @@ footer{margin-top:2.5rem;text-align:center;font-size:.8rem;color:var(--muted)}
 <section class="card" id="the-seven">
 <h2>Cards 1–7</h2>
 <div class="grid">
-<figure><img src="images/033.jpg" alt="Soft7 #1" loading="lazy"/><figcaption>#1 · 033</figcaption></figure>
-<figure><img src="images/034.jpg" alt="Soft7 #2" loading="lazy"/><figcaption>#2 · 034</figcaption></figure>
+<figure class="lock"><a class="loop-link" href="#staking-loop"><img src="images/033.jpg" alt="Soft7 #1 Fox card, locks FOX" loading="lazy"/><figcaption>#1 · Fox · locks FOX</figcaption></a></figure>
+<figure class="lock"><a class="loop-link" href="#staking-loop"><img src="images/034.jpg" alt="Soft7 #2 Tiger card, locks tigerwillca" loading="lazy"/><figcaption>#2 · Tiger · locks TIGER</figcaption></a></figure>
 <figure><img src="images/035.jpg" alt="Soft7 #3" loading="lazy"/><figcaption>#3 · 035</figcaption></figure>
 <figure><img src="images/036.jpg" alt="Soft7 #4" loading="lazy"/><figcaption>#4 · 036</figcaption></figure>
 <figure><img src="images/037.jpg" alt="Soft7 #5" loading="lazy"/><figcaption>#5 · 037</figcaption></figure>
