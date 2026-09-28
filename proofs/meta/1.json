@@ -1,0 +1,28 @@
+{
+  "name": "Reynard Soft7 Proof Tier 1",
+  "description": "reynard-soft7 mascot cards on robinhood chain. ten percent of every mint routes back to soft7 holders proportional to what they hold. stake your card, feed the treasury, pull when you're ready.",
+  "image": "https://cdn.jsdelivr.net/gh/tigerwillca/reynard-soft7-sepolia@cb864244a506fe0fe5f5412f6efeeea3902aa894/proofs/art/01.png",
+  "external_url": "https://tigerwillca.github.io/",
+  "attributes": [
+    {
+      "trait_type": "tier",
+      "value": 1
+    },
+    {
+      "trait_type": "color",
+      "value": "Crimson"
+    },
+    {
+      "trait_type": "eyes",
+      "value": "Amber Lock"
+    },
+    {
+      "trait_type": "signature",
+      "value": "Brow Line"
+    },
+    {
+      "trait_type": "globe",
+      "value": "Root Stone"
+    }
+  ]
+}
