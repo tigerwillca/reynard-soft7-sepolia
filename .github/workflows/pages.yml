@@ -30,11 +30,13 @@ jobs:
         with:
           # Creates the Pages site on the first run if Settings has not been opened yet.
           enablement: true
+      - name: Assemble public site
+        run: bash scripts/assemble_public_site.sh "$GITHUB_WORKSPACE/_site"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Repository root, including index.html and images/
-          path: .
+          # Allowlisted public files only. .git, .github, .cursor, and scripts stay out.
+          path: _site
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
