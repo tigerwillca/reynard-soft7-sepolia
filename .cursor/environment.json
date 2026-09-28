@@ -1,7 +1,7 @@
 {
   "name": "reynard-soft7-sepolia",
   "install": "python3 scripts/validate_metadata.py",
-  "start": "bash scripts/start_server.sh",
+  "start": "bash /workspace/scripts/start_server.sh",
   "ports": [
     {
       "name": "metadata",
