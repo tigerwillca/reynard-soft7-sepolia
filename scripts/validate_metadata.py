@@ -127,7 +127,7 @@ def validate_proofs() -> list[str]:
         if not isinstance(image, str) or not (image.endswith(".png") or image.endswith(".gif")):
             errors.append(f"{path.name}: image must be one png or gif path")
         else:
-            art = REPO_ROOT / image
+            art = ART_DIR / image.rsplit("/", 1)[-1]
             if not art.is_file():
                 errors.append(f"{path.name}: image file missing: {image}")
             else:
