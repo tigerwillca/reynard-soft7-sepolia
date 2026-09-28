@@ -1,6 +1,6 @@
 {
   "name": "Reynard Soft7 #1 (Art 033)",
-  "description": "Reynard Soft7 on Robinhood Chain mainnet. SoftReynard7 card from The Seventh Gate. Art slot 033. Supply 7. Secondary sales pay a 7.5% creator fee; 1.5% of the sale price is paid quarterly on-chain to holders of Soft7 tokens 1-7.",
+  "description": "Reynard Soft7 on Robinhood Chain mainnet. SoftReynard7 card from The Seventh Gate. Art slot 033. The Fox card locks FOX (0x387fbf7128868093D5E22A5528A5fC3D2BA8c9f5). Locked FOX burns to the Soft7 treasury. Rewards route to USDG and SpaceX. Supply 7. Secondary sales pay a 7.5% creator fee; 1.5% of the sale price is paid quarterly on-chain to holders of Soft7 tokens 1-7.",
   "image": "https://cdn.jsdelivr.net/gh/tigerwillca/reynard-soft7-sepolia@ae7d304699989b945bfe8c0f4225f3a7fc952f83/images/033.jpg",
   "external_url": "https://tigerwillca.github.io/",
   "attributes": [
@@ -23,6 +23,26 @@
     {
       "trait_type": "Drop",
       "value": "Soft7"
+    },
+    {
+      "trait_type": "Card",
+      "value": "Fox"
+    },
+    {
+      "trait_type": "Lock",
+      "value": "FOX"
+    },
+    {
+      "trait_type": "Lock Contract",
+      "value": "0x387fbf7128868093D5E22A5528A5fC3D2BA8c9f5"
+    },
+    {
+      "trait_type": "Burn",
+      "value": "Soft7 treasury"
+    },
+    {
+      "trait_type": "Rewards",
+      "value": "USDG + SpaceX"
     }
   ]
 }

@@ -1,0 +1,49 @@
+{
+  "chainId": 4663,
+  "network": "Robinhood Chain",
+  "treasury": {
+    "name": "Soft7 treasury",
+    "address": "0x6B0E22d322c967DFBDB57D027cE53D1D32F7711A",
+    "action": "burn"
+  },
+  "rewards": [
+    {
+      "name": "Global Dollar",
+      "symbol": "USDG",
+      "address": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+      "decimals": 6
+    },
+    {
+      "name": "Space Exploration Technologies Corp. Class A Common Stock • Robinhood Token",
+      "symbol": "SPCX",
+      "address": "0x4a0E65A3EcceC6dBe60AE065F2e7bb85Fae35eEa",
+      "decimals": 18
+    }
+  ],
+  "locks": [
+    {
+      "card": "fox",
+      "soft7TokenId": 1,
+      "artSlot": "033",
+      "image": "images/033.jpg",
+      "lock": {
+        "name": "Reynard",
+        "symbol": "FOX",
+        "address": "0x387fbf7128868093D5E22A5528A5fC3D2BA8c9f5",
+        "decimals": 18
+      }
+    },
+    {
+      "card": "tiger",
+      "soft7TokenId": 2,
+      "artSlot": "034",
+      "image": "images/034.jpg",
+      "lock": {
+        "name": "tigerwillca",
+        "symbol": "TIGER",
+        "address": "0x316C19b923B19E57A281996bfb9f8e96b2DA6427",
+        "decimals": 18
+      }
+    }
+  ]
+}

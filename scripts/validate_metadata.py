@@ -21,6 +21,8 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 META_DIR = REPO_ROOT / "meta"
+STAKING_LOOP = REPO_ROOT / "staking-loop.json"
+LANDING = REPO_ROOT / "index.html"
 
 REQUIRED_FIELDS = ("name", "description", "image")
 
@@ -86,6 +88,88 @@ def validate_file(path: Path) -> list[str]:
     return errors
 
 
+def _trait(data: dict, trait_type: str) -> str | None:
+    for attr in data.get("attributes") or []:
+        if isinstance(attr, dict) and attr.get("trait_type") == trait_type:
+            value = attr.get("value")
+            return value if isinstance(value, str) else None
+    return None
+
+
+def validate_staking_loop() -> list[str]:
+    """The Fox card locks FOX, the Tiger card locks tigerwillca, both burn to treasury."""
+    errors: list[str] = []
+    if not STAKING_LOOP.is_file():
+        return ["staking-loop.json is missing"]
+    try:
+        loop = json.loads(STAKING_LOOP.read_text())
+    except json.JSONDecodeError as exc:
+        return [f"staking-loop.json is invalid JSON: {exc}"]
+
+    locks = loop.get("locks")
+    rewards = loop.get("rewards")
+    treasury = loop.get("treasury") or {}
+    if not isinstance(locks, list) or len(locks) != 2:
+        errors.append("staking loop must lock exactly the fox and tiger cards")
+    if not isinstance(rewards, list) or [r.get("symbol") for r in rewards] != ["USDG", "SPCX"]:
+        errors.append("staking rewards must route to USDG then SpaceX (SPCX)")
+    if treasury.get("action") != "burn" or not str(treasury.get("address", "")).startswith("0x"):
+        errors.append("staking locks must burn to a treasury address")
+
+    expected = {
+        1: ("fox", "FOX", "0x387fbf7128868093D5E22A5528A5fC3D2BA8c9f5", "Fox"),
+        2: ("tiger", "TIGER", "0x316C19b923B19E57A281996bfb9f8e96b2DA6427", "Tiger"),
+    }
+    by_id = {}
+    if isinstance(locks, list):
+        for lock in locks:
+            if isinstance(lock, dict):
+                by_id[lock.get("soft7TokenId")] = lock
+    for token_id, (card, symbol, address, card_trait) in expected.items():
+        lock = by_id.get(token_id)
+        if not isinstance(lock, dict):
+            errors.append(f"staking loop missing Soft7 #{token_id}")
+            continue
+        got = lock.get("lock") or {}
+        if lock.get("card") != card or got.get("symbol") != symbol or got.get("address") != address:
+            errors.append(f"Soft7 #{token_id} must be the {card} card locking {symbol} at {address}")
+        meta_path = META_DIR / f"{token_id}.json"
+        try:
+            meta = json.loads(meta_path.read_text())
+        except (OSError, json.JSONDecodeError) as exc:
+            errors.append(f"{meta_path.name} unreadable: {exc}")
+            continue
+        if _trait(meta, "Card") != card_trait or _trait(meta, "Lock") != symbol:
+            errors.append(f"meta/{token_id}.json card/lock traits must be {card_trait} / {symbol}")
+        if _trait(meta, "Lock Contract") != address:
+            errors.append(f"meta/{token_id}.json Lock Contract must be {address}")
+        if _trait(meta, "Burn") != "Soft7 treasury" or _trait(meta, "Rewards") != "USDG + SpaceX":
+            errors.append(f"meta/{token_id}.json must burn to treasury and reward USDG + SpaceX")
+        if address not in meta.get("description", ""):
+            errors.append(f"meta/{token_id}.json description must name the lock contract")
+
+    if LANDING.is_file():
+        html = LANDING.read_text()
+        required = [
+            "0x387fbf7128868093D5E22A5528A5fC3D2BA8c9f5",
+            "0x316C19b923B19E57A281996bfb9f8e96b2DA6427",
+            "0x6B0E22d322c967DFBDB57D027cE53D1D32F7711A",
+            "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+            "0x4a0E65A3EcceC6dBe60AE065F2e7bb85Fae35eEa",
+            'id="staking-loop"',
+            "locks FOX",
+            "locks tigerwillca",
+            "burn to the Soft7 treasury",
+            "Rewards route to USDG and SpaceX",
+        ]
+        for needle in required:
+            if needle not in html:
+                errors.append(f"index.html staking loop missing {needle!r}")
+    else:
+        errors.append("index.html is missing")
+    return errors
+
+
 def main() -> int:
     if not META_DIR.is_dir():
         print(f"ERROR: metadata directory not found: {META_DIR}", file=sys.stderr)
@@ -109,6 +193,15 @@ def main() -> int:
             data = json.loads(path.read_text())
             kind = "data-URI" if str(data.get("image", "")).startswith("data:") else "url"
             print(f"OK   {rel}  ({data.get('name', '?')}, image={kind})")
+
+    loop_errors = validate_staking_loop()
+    if loop_errors:
+        total_errors += len(loop_errors)
+        print("FAIL staking-loop.json")
+        for err in loop_errors:
+            print(f"     - {err}")
+    else:
+        print("OK   staking-loop.json  (fox locks FOX, tiger locks TIGER, burn treasury, rewards USDG+SPCX)")
 
     print("-" * 60)
     if total_errors:

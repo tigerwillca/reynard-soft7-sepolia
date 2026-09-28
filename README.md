@@ -19,6 +19,17 @@ The repository name stays `reynard-soft7-sepolia`.
 
 `index.html` is the public landing. The hero is the Mask Depth banner `mask-depth-reynard/1.jpg` (853×1280), with a full-page forest loop (`soft7-bg-loop.webm` / `.mp4`, poster `soft7-bg-key-01.png`) and cards 1–7 at `#the-seven`. Card art is `images/033.jpg`–`images/039.jpg`. Token metadata is `meta/1.json`–`meta/7.json`. Collection metadata for the OpenSea editor is `meta/collection.json`.
 
+## Staking loop
+
+`staking-loop.json` is the loop record, and `#staking-loop` on the landing reads the same route.
+
+| Card | Soft7 | Locks | Contract |
+| --- | --- | --- | --- |
+| Fox | #1 · art 033 | FOX (Reynard) | `0x387fbf7128868093D5E22A5528A5fC3D2BA8c9f5` |
+| Tiger | #2 · art 034 | tigerwillca (TIGER) | `0x316C19b923B19E57A281996bfb9f8e96b2DA6427` |
+
+Both locks burn to the Soft7 treasury `0x6B0E22d322c967DFBDB57D027cE53D1D32F7711A`. Rewards route to USDG `0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168` and SpaceX (SPCX) `0x4a0E65A3EcceC6dBe60AE065F2e7bb85Fae35eEa`.
+
 The live site today is [tigerwillca.github.io](https://tigerwillca.github.io/) (the user Pages repo). This repo’s project Pages site is not created yet.
 
 Built on Robinhood Chain · not a Robinhood product.
