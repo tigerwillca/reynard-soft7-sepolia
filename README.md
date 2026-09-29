@@ -17,7 +17,7 @@ The repository name stays `reynard-soft7-sepolia`.
 | Mainnet announcement | https://x.com/tigerwillca/status/2103414595930968299 |
 | Deployer | `0x86dF4D2fAA9aC25D408AA4E4Fb890B9918c5f066` |
 
-`index.html` is the public landing. Share copies `https://tigerwillca.github.io/` or opens that link on X, and uses the device share sheet when the browser offers one. The hero is the Mask Depth banner `mask-depth-reynard/1.jpg` (853×1280), with a full-page forest loop (`soft7-bg-loop.webm` / `.mp4`, poster `soft7-bg-key-01.png`) and cards 1–7 at `#the-seven`. Card art is `images/033.jpg`–`images/039.jpg`. Token metadata is `meta/1.json`–`meta/7.json`. Collection metadata for the OpenSea editor is `meta/collection.json`.
+`index.html` is the public landing: a phone-first page with the phoenix banner, cards 1–7, staking, and the dividend. Share, in the header links, copies `https://tigerwillca.github.io/` or opens that link on X, and uses the device share sheet when the browser offers one. Link previews use the pinned phoenix banner. Token metadata is `meta/1.json`–`meta/7.json`. Collection metadata for the OpenSea editor is `meta/collection.json`.
 
 The live site today is [tigerwillca.github.io](https://tigerwillca.github.io/) (the user Pages repo). This repo’s project Pages site is not created yet.
 
