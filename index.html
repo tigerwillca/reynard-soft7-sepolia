@@ -20,7 +20,7 @@
 <style>
 :root{color-scheme:dark;--bg:#07050f;--ink:#f3eef8;--muted:#c8bdd6;--gold:#f0e0a8;--lime:#ccff00;--line:rgba(155,109,255,.35)}
 *{box-sizing:border-box}
-html{background:var(--bg)}
+html{background:var(--bg);scroll-padding-bottom:calc(5.5rem + env(safe-area-inset-bottom))}
 body{margin:0;font:16px/1.5 system-ui,-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--ink);padding-bottom:calc(5.25rem + env(safe-area-inset-bottom))}
 img{max-width:100%;height:auto}
 a{color:var(--gold)}
@@ -37,9 +37,9 @@ h1{margin:.35rem 0 .5rem;font-size:clamp(1.85rem,8vw,2.6rem);font-weight:700;let
 h2{margin:0 0 .6rem;font-size:1.15rem;letter-spacing:-.02em}
 section{margin-top:1.75rem}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
-.grid a{display:block;color:inherit;text-decoration:none}
+.grid a{position:relative;display:block;color:inherit;text-decoration:none}
 .grid img{width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:12px;background:#120818;border:1px solid var(--line)}
-.grid figcaption{margin-top:.35rem;font-size:.9rem;color:var(--muted)}
+.grid figcaption{position:absolute;top:.45rem;left:.45rem;margin:0;padding:.2rem .55rem;border-radius:999px;background:rgba(7,5,15,.82);color:var(--gold);font-size:.8rem;font-weight:700}
 .grid figure{margin:0}
 .grid figure:last-child{grid-column:1 / -1;max-width:calc(50% - .3rem);justify-self:center}
 .panel{border:1px solid var(--line);border-radius:14px;padding:1rem;background:#100a18}
@@ -67,7 +67,7 @@ body{padding-bottom:2rem}
 <h1>Reynard Soft7</h1>
 <p class="lede">Seven cards. Hold one and you are in the stake. Secondary sales pay holders a quarterly on-chain dividend.</p>
 <a class="cta" href="https://opensea.io/collection/reynard-soft7">Open the collection</a>
-<p class="hint">Supply is 7. Each card opens that token. This button opens the collection.</p>
+<p class="hint">Supply is 7. Tap a card to open that token.</p>
 <ul class="links">
 <li><a href="#the-seven">The seven</a></li>
 <li><a href="#staking">Staking</a></li>
