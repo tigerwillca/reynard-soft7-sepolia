@@ -33,6 +33,15 @@ h1{margin:.5rem 0 .75rem;font-weight:500;font-size:clamp(1.8rem,6vw,2.8rem);lett
 .ctas{display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center;margin:1.25rem 0 2rem}
 .btn{display:inline-block;padding:.7rem 1.1rem;border:1px solid var(--line);border-radius:999px;text-decoration:none;color:var(--gold);background:rgba(107,63,160,.22);font-size:.9rem}
 .btn.primary{background:rgba(204,255,0,.12);border-color:rgba(204,255,0,.35);color:#e8ffb0}
+.share{position:relative;display:inline-block}
+.share summary{list-style:none;cursor:pointer}
+.share summary::-webkit-details-marker{display:none}
+.share[open] summary{border-color:rgba(204,255,0,.45);color:#e8ffb0}
+.share-menu{position:absolute;z-index:3;top:calc(100% + .45rem);left:50%;transform:translateX(-50%);min-width:12.5rem;padding:.35rem;border:1px solid var(--line);border-radius:12px;background:#120c1c;box-shadow:0 12px 32px rgba(0,0,0,.5)}
+.share-menu a,.share-menu button{display:block;width:100%;margin:0;padding:.55rem .75rem;border:0;border-radius:8px;background:transparent;color:var(--gold);font:inherit;font-size:.9rem;text-align:left;text-decoration:none;cursor:pointer}
+.share-menu a:hover,.share-menu a:focus-visible,.share-menu button:hover,.share-menu button:focus-visible{background:rgba(107,63,160,.4);outline:none}
+.share-status{margin:.15rem .75rem .35rem;font-size:.75rem;color:var(--lime)}
+.share-status:empty{display:none}
 .card{backdrop-filter:blur(10px);background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:1.1rem;margin:1rem 0;box-shadow:0 8px 32px rgba(0,0,0,.35)}
 .card h2{margin:0 0 .75rem;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;color:var(--glow)}
 .giveback{border-color:rgba(204,255,0,.28)}
@@ -72,6 +81,15 @@ footer{margin-top:2.5rem;text-align:center;font-size:.8rem;color:var(--muted)}
 <a class="btn" href="https://opensea.io/collection/reynard-soft7">OpenSea</a>
 <a class="btn" href="https://robinhoodchain.blockscout.com/address/0x73D7b2611509C14078e16f572bE5aC7D91879DC2">Blockscout</a>
 <a class="btn" href="https://x.com/tigerwillca">@tigerwillca</a>
+<details class="share">
+<summary class="btn" aria-haspopup="menu">Share</summary>
+<div class="share-menu" role="menu">
+<button type="button" role="menuitem" id="share-native" hidden>Share…</button>
+<a role="menuitem" id="share-x" href="https://x.com/intent/tweet?text=Reynard+Soft7+on+Robinhood+Chain+%E2%80%94+seven+cards+that+give+back.+1.5%25+of+every+secondary+sale+to+Soft7+holders%2C+paid+quarterly+on-chain.&amp;url=https%3A%2F%2Ftigerwillca.github.io%2F" target="_blank" rel="noopener noreferrer">Post on X</a>
+<button type="button" role="menuitem" id="share-copy">Copy link</button>
+<p class="share-status" id="share-status" role="status" aria-live="polite"></p>
+</div>
+</details>
 </div>
 </header>
 <section class="card giveback" id="giveback">
@@ -104,5 +122,77 @@ footer{margin-top:2.5rem;text-align:center;font-size:.8rem;color:var(--muted)}
 </section>
 <footer>Built on Robinhood Chain · not a Robinhood product<br/>Soft7 gives back · <a href="https://tigerwillca.github.io/">tigerwillca.github.io</a></footer>
 </div>
+<script>
+(function () {
+  var root = document.querySelector(".share");
+  if (!root) return;
+  var canonical = document.querySelector('link[rel="canonical"]');
+  var url = canonical && canonical.href ? canonical.href : "https://tigerwillca.github.io/";
+  var title = "Reynard Soft7 · Robinhood Chain";
+  var text = "Reynard Soft7 on Robinhood Chain — seven cards that give back. 1.5% of every secondary sale to Soft7 holders, paid quarterly on-chain.";
+  var payload = { title: title, text: text, url: url };
+  var nativeBtn = document.getElementById("share-native");
+  var copyBtn = document.getElementById("share-copy");
+  var status = document.getElementById("share-status");
+
+  function setStatus(message) {
+    if (status) status.textContent = message;
+  }
+
+  function fallbackCopy(value) {
+    var field = document.createElement("textarea");
+    field.value = value;
+    field.setAttribute("readonly", "");
+    field.style.position = "fixed";
+    field.style.left = "-9999px";
+    document.body.appendChild(field);
+    field.select();
+    var ok = false;
+    try { ok = document.execCommand("copy"); } catch (err) { ok = false; }
+    document.body.removeChild(field);
+    return ok;
+  }
+
+  if (nativeBtn && navigator.share && (!navigator.canShare || navigator.canShare(payload))) {
+    nativeBtn.hidden = false;
+    nativeBtn.addEventListener("click", function () {
+      navigator.share(payload).then(function () {
+        setStatus("Shared");
+      }).catch(function (err) {
+        if (!err || err.name === "AbortError") return;
+        setStatus("Share did not open. Copy the link instead.");
+      });
+    });
+  }
+
+  if (copyBtn) {
+    copyBtn.addEventListener("click", function () {
+      var done = function () { setStatus("Link copied"); };
+      var fail = function () { setStatus(url); };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(done).catch(function () {
+          fallbackCopy(url) ? done() : fail();
+        });
+      } else if (fallbackCopy(url)) {
+        done();
+      } else {
+        fail();
+      }
+    });
+  }
+
+  document.addEventListener("click", function (event) {
+    if (root.open && !root.contains(event.target)) root.open = false;
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && root.open) {
+      root.open = false;
+      var summary = root.querySelector("summary");
+      if (summary) summary.focus();
+    }
+  });
+})();
+</script>
 </body>
 </html>
