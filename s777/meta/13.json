@@ -1,0 +1,24 @@
+{
+  "name": "Reynard Soft7 777 #13",
+  "description": "Reynard Soft7 777. Card 13 of 777, wave 1. A fox arc-wizard of the Seventh Gate, robed and watchful at the threshold. From the world of Reynard Soft7: the foxes and tigers of the Seventh Gate, the phoenix above them and the titans behind them. Built on Robinhood Chain, not a Robinhood product.",
+  "image": "https://cdn.jsdelivr.net/gh/tigerwillca/reynard-soft7-sepolia@7217f315ecb03eebbf566adf5ced448619f03e5f/s777/images/13.jpg",
+  "external_url": "https://tigerwillca.github.io/",
+  "attributes": [
+    {
+      "trait_type": "Wave",
+      "value": "1"
+    },
+    {
+      "trait_type": "Species",
+      "value": "Fox"
+    },
+    {
+      "trait_type": "Tier",
+      "value": "Common"
+    },
+    {
+      "trait_type": "Art Format",
+      "value": "Robed Wizard"
+    }
+  ]
+}

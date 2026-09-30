@@ -1,0 +1,9 @@
+{
+  "name": "Reynard Soft7 777",
+  "description": "777 cards from the world of Reynard Soft7: the foxes and tigers of the Seventh Gate, the phoenix above them and the titans behind them. Released in tapering waves on Robinhood Chain (chain ID 4663). Companion to the seven-card Reynard Soft7 collection. Built on Robinhood Chain, not a Robinhood product.",
+  "image": "https://cdn.jsdelivr.net/gh/tigerwillca/reynard-soft7-sepolia@7217f315ecb03eebbf566adf5ced448619f03e5f/s777/images/collection.jpg",
+  "banner_image": "https://cdn.jsdelivr.net/gh/tigerwillca/reynard-soft7-sepolia@7217f315ecb03eebbf566adf5ced448619f03e5f/s777/images/sealed.jpg",
+  "external_link": "https://tigerwillca.github.io/",
+  "seller_fee_basis_points": 750,
+  "fee_recipient": "0xe53bdb2118585d5b2cd06a117d3a036afa70677a"
+}

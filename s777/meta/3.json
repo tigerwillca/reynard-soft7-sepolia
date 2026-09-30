@@ -1,0 +1,24 @@
+{
+  "name": "Reynard Soft7 777 #3 · Special",
+  "description": "Reynard Soft7 777. Card 3 of 777, founder set. A founder special card. Its art is still being made. From the world of Reynard Soft7: the foxes and tigers of the Seventh Gate, the phoenix above them and the titans behind them. Built on Robinhood Chain, not a Robinhood product.",
+  "image": "https://cdn.jsdelivr.net/gh/tigerwillca/reynard-soft7-sepolia@7217f315ecb03eebbf566adf5ced448619f03e5f/s777/images/placeholder.jpg",
+  "external_url": "https://tigerwillca.github.io/",
+  "attributes": [
+    {
+      "trait_type": "Wave",
+      "value": "0"
+    },
+    {
+      "trait_type": "Tier",
+      "value": "Special"
+    },
+    {
+      "trait_type": "Status",
+      "value": "Art pending"
+    },
+    {
+      "trait_type": "Allocation",
+      "value": "Founder"
+    }
+  ]
+}

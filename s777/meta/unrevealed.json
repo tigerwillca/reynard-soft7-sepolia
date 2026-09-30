@@ -1,0 +1,12 @@
+{
+  "name": "Reynard Soft7 777 · Sealed",
+  "description": "Reynard Soft7 777. This card is still sealed. It is revealed after its wave sells out. From the world of Reynard Soft7: the foxes and tigers of the Seventh Gate, the phoenix above them and the titans behind them. Built on Robinhood Chain, not a Robinhood product.",
+  "image": "https://cdn.jsdelivr.net/gh/tigerwillca/reynard-soft7-sepolia@7217f315ecb03eebbf566adf5ced448619f03e5f/s777/images/sealed.jpg",
+  "external_url": "https://tigerwillca.github.io/",
+  "attributes": [
+    {
+      "trait_type": "Status",
+      "value": "Sealed"
+    }
+  ]
+}
