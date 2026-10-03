@@ -10,11 +10,13 @@
 <meta property="og:title" content="Reynard Soft7 · Robinhood Chain"/>
 <meta property="og:description" content="Seven cards on Robinhood Chain. Holders stake by holding and receive a 1.5% quarterly on-chain dividend."/>
 <meta property="og:url" content="https://tigerwillca.github.io/"/>
-<meta property="og:image" content="images/phoenix-banner.webp"/>
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/tigerwillca/reynard-soft7-sepolia@74d0012480da26997a6b527e031fcd3ae0a5c699/images/phoenix-banner.webp"/>
+<meta property="og:image:width" content="960"/>
+<meta property="og:image:height" content="540"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Reynard Soft7 · Robinhood Chain"/>
 <meta name="twitter:description" content="Seven cards on Robinhood Chain. Holders stake by holding and receive a 1.5% quarterly on-chain dividend."/>
-<meta name="twitter:image" content="images/phoenix-banner.webp"/>
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/tigerwillca/reynard-soft7-sepolia@74d0012480da26997a6b527e031fcd3ae0a5c699/images/phoenix-banner.webp"/>
 <title>Reynard Soft7 · Robinhood Chain</title>
 <link rel="preload" as="image" href="images/phoenix-banner-sm.webp" imagesrcset="images/phoenix-banner-sm.webp 640w, images/phoenix-banner.webp 960w" imagesizes="100vw" fetchpriority="high"/>
 <style>
@@ -33,7 +35,17 @@ h1{margin:.35rem 0 .5rem;font-size:clamp(1.85rem,8vw,2.6rem);font-weight:700;let
 .mint:focus-visible{outline:3px solid #fff;outline-offset:3px}
 .hint{margin:.65rem 0 0;color:var(--muted);font-size:.9rem}
 .links{display:flex;flex-wrap:wrap;gap:.35rem 1rem;margin:1rem 0 0;padding:0;list-style:none}
-.links a{display:inline-flex;min-height:44px;align-items:center}
+.links a,.share summary{display:inline-flex;min-height:44px;align-items:center}
+.share{position:relative}
+.share summary{list-style:none;cursor:pointer;color:var(--gold)}
+.share summary::-webkit-details-marker{display:none}
+.share summary:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.share-menu{position:absolute;z-index:5;top:calc(100% + .25rem);left:0;min-width:12rem;max-width:calc(100vw - 1.5rem);padding:.35rem;border:1px solid var(--line);border-radius:12px;background:#100a18;box-shadow:0 12px 32px rgba(0,0,0,.45)}
+.share-menu a,.share-menu button{display:flex;align-items:center;width:100%;min-height:44px;margin:0;padding:.4rem .75rem;border:0;border-radius:8px;background:transparent;color:var(--gold);font:inherit;text-align:left;text-decoration:none;cursor:pointer}
+.share-menu [hidden]{display:none}
+.share-menu a:hover,.share-menu a:focus-visible,.share-menu button:hover,.share-menu button:focus-visible{background:rgba(155,109,255,.25);outline:none}
+.share-status{margin:.15rem .75rem .35rem;font-size:.8rem;color:var(--lime)}
+.share-status:empty{display:none}
 h2{margin:0 0 .6rem;font-size:1.15rem;letter-spacing:-.02em}
 section{margin-top:1.75rem}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
@@ -75,6 +87,15 @@ body{padding-bottom:2rem}
 <li><a href="#dividend">Dividend</a></li>
 <li><a href="https://robinhoodchain.blockscout.com/address/0x73D7b2611509C14078e16f572bE5aC7D91879DC2">Contract</a></li>
 <li><a href="https://x.com/tigerwillca">@tigerwillca</a></li>
+<li><details class="share">
+<summary aria-haspopup="menu">Share</summary>
+<div class="share-menu" role="menu">
+<button type="button" role="menuitem" id="share-native" hidden>Share…</button>
+<a role="menuitem" id="share-x" href="https://x.com/intent/tweet?text=Reynard+Soft7+on+Robinhood+Chain.+Seven+cards.+Holders+stake+by+holding+and+receive+a+1.5%25+quarterly+on-chain+dividend.&amp;url=https%3A%2F%2Ftigerwillca.github.io%2F" target="_blank" rel="noopener noreferrer">Post on X</a>
+<button type="button" role="menuitem" id="share-copy">Copy link</button>
+<p class="share-status" id="share-status" role="status" aria-live="polite"></p>
+</div>
+</details></li>
 </ul>
 </header>
 <section id="the-seven" aria-labelledby="cards-title">
@@ -113,5 +134,124 @@ body{padding-bottom:2rem}
 <span>Supply 7 · collect on OpenSea</span>
 <a class="mint" href="https://opensea.io/collection/reynard-soft7">Mint</a>
 </div>
+<script>
+(function () {
+  var root = document.querySelector(".share");
+  if (!root) return;
+  var canonical = document.querySelector('link[rel="canonical"]');
+  var url = canonical && canonical.href ? canonical.href : "https://tigerwillca.github.io/";
+  var title = "Reynard Soft7 · Robinhood Chain";
+  var text = "Reynard Soft7 on Robinhood Chain. Seven cards. Holders stake by holding and receive a 1.5% quarterly on-chain dividend.";
+  var payload = { title: title, text: text, url: url };
+  var nativeBtn = document.getElementById("share-native");
+  var copyBtn = document.getElementById("share-copy");
+  var status = document.getElementById("share-status");
+
+  function setStatus(message) {
+    if (status) status.textContent = message;
+  }
+
+  function fallbackCopy(value) {
+    var field = document.createElement("textarea");
+    field.value = value;
+    field.setAttribute("readonly", "");
+    field.style.position = "fixed";
+    field.style.left = "-9999px";
+    document.body.appendChild(field);
+    field.select();
+    var ok = false;
+    try { ok = document.execCommand("copy"); } catch (err) { ok = false; }
+    document.body.removeChild(field);
+    return ok;
+  }
+
+  function canNativeShare() {
+    if (!navigator.share) return false;
+    if (typeof navigator.canShare !== "function") return true;
+    try { return navigator.canShare(payload); } catch (err) { return false; }
+  }
+
+  if (nativeBtn && canNativeShare()) {
+    nativeBtn.hidden = false;
+    nativeBtn.addEventListener("click", function () {
+      navigator.share(payload).then(function () {
+        setStatus("Shared");
+      }).catch(function (err) {
+        if (!err || err.name === "AbortError") return;
+        setStatus("Share did not open. Copy the link instead.");
+      });
+    });
+  }
+
+  if (copyBtn) {
+    copyBtn.addEventListener("click", function () {
+      var done = function () { setStatus("Link copied"); };
+      var fail = function () { setStatus(url); };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(done).catch(function () {
+          fallbackCopy(url) ? done() : fail();
+        });
+      } else if (fallbackCopy(url)) {
+        done();
+      } else {
+        fail();
+      }
+    });
+  }
+
+  function place() {
+    var menu = root.querySelector(".share-menu");
+    var summary = root.querySelector("summary");
+    if (!menu || !summary) return;
+    menu.style.top = "";
+    menu.style.bottom = "";
+    menu.style.left = "";
+    menu.style.right = "";
+    if (!root.open) return;
+    var limit = window.innerHeight - 8;
+    var dock = document.querySelector(".dock");
+    if (dock && getComputedStyle(dock).display !== "none") {
+      limit = Math.min(limit, dock.getBoundingClientRect().top - 8);
+    }
+    var rect = menu.getBoundingClientRect();
+    if (rect.bottom > limit) {
+      menu.style.top = "auto";
+      menu.style.bottom = "calc(100% + .25rem)";
+      rect = menu.getBoundingClientRect();
+      if (rect.top < 8) {
+        menu.style.top = "";
+        menu.style.bottom = "";
+      }
+    }
+    rect = menu.getBoundingClientRect();
+    if (rect.right > window.innerWidth - 8) {
+      menu.style.left = "auto";
+      menu.style.right = "0";
+    }
+    rect = menu.getBoundingClientRect();
+    if (rect.left < 8) {
+      menu.style.left = "0";
+      menu.style.right = "auto";
+    }
+  }
+
+  root.addEventListener("toggle", function () {
+    requestAnimationFrame(place);
+  });
+  window.addEventListener("resize", place);
+
+  document.addEventListener("click", function (event) {
+    if (root.open && !root.contains(event.target)) root.open = false;
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && root.open) {
+      root.open = false;
+      var summary = root.querySelector("summary");
+      if (summary) summary.focus();
+    }
+  });
+})();
+</script>
 </body>
 </html>
