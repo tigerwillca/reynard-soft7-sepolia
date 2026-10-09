@@ -4,7 +4,7 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
 <meta name="theme-color" content="#07050f"/>
-<meta name="description" content="Reynard Soft7 on Robinhood Chain. Seven cards, a mint link, holder staking, and a 1.5% quarterly on-chain dividend."/>
+<meta name="description" content="Reynard Soft7 on Robinhood Chain. Seven portrait cards, Soft7 #1–#7, each opening that token on OpenSea. Holders stake by holding and receive a 1.5% quarterly on-chain dividend."/>
 <link rel="canonical" href="https://tigerwillca.github.io/"/>
 <meta property="og:type" content="website"/>
 <meta property="og:title" content="Reynard Soft7 · Robinhood Chain"/>
@@ -20,7 +20,7 @@
 <style>
 :root{color-scheme:dark;--bg:#07050f;--ink:#f3eef8;--muted:#c8bdd6;--gold:#f0e0a8;--lime:#ccff00;--line:rgba(155,109,255,.35)}
 *{box-sizing:border-box}
-html{background:var(--bg)}
+html{background:var(--bg);scroll-padding-bottom:calc(5.5rem + env(safe-area-inset-bottom))}
 body{margin:0;font:16px/1.5 system-ui,-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--ink);padding-bottom:calc(5.25rem + env(safe-area-inset-bottom))}
 img{max-width:100%;height:auto}
 a{color:var(--gold)}
@@ -29,17 +29,17 @@ a{color:var(--gold)}
 .eyebrow{margin:0;color:#c4b0ff;font:600 .8rem/1.4 ui-monospace,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase}
 h1{margin:.35rem 0 .5rem;font-size:clamp(1.85rem,8vw,2.6rem);font-weight:700;letter-spacing:-.03em;line-height:1.05;color:var(--gold)}
 .lede{margin:0 0 1rem;color:var(--muted)}
-.mint{display:flex;align-items:center;justify-content:center;min-height:48px;padding:.75rem 1.25rem;border-radius:999px;background:var(--lime);color:#141806;font-weight:700;text-decoration:none;letter-spacing:.01em}
-.mint:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.cta{display:flex;align-items:center;justify-content:center;min-height:48px;padding:.75rem 1.25rem;border-radius:999px;background:var(--lime);color:#141806;font-weight:700;text-decoration:none;letter-spacing:.01em;text-align:center}
+.cta:focus-visible{outline:3px solid #fff;outline-offset:3px}
 .hint{margin:.65rem 0 0;color:var(--muted);font-size:.9rem}
 .links{display:flex;flex-wrap:wrap;gap:.35rem 1rem;margin:1rem 0 0;padding:0;list-style:none}
 .links a{display:inline-flex;min-height:44px;align-items:center}
 h2{margin:0 0 .6rem;font-size:1.15rem;letter-spacing:-.02em}
 section{margin-top:1.75rem}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
-.grid a{display:block;color:inherit;text-decoration:none}
+.grid a{position:relative;display:block;color:inherit;text-decoration:none}
 .grid img{width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:12px;background:#120818;border:1px solid var(--line)}
-.grid figcaption{margin-top:.35rem;font-size:.9rem;color:var(--muted)}
+.grid figcaption{position:absolute;top:.45rem;left:.45rem;margin:0;padding:.2rem .55rem;border-radius:999px;background:rgba(7,5,15,.82);color:var(--gold);font-size:.8rem;font-weight:700}
 .grid figure{margin:0}
 .grid figure:last-child{grid-column:1 / -1;max-width:calc(50% - .3rem);justify-self:center}
 .panel{border:1px solid var(--line);border-radius:14px;padding:1rem;background:#100a18}
@@ -48,9 +48,8 @@ section{margin-top:1.75rem}
 .addr{font:600 .82rem/1.45 ui-monospace,Menlo,monospace;word-break:break-all}
 .below{content-visibility:auto;contain-intrinsic-size:auto 280px}
 footer{margin-top:1.75rem;color:var(--muted);font-size:.9rem}
-.dock{position:fixed;left:0;right:0;bottom:0;z-index:2;display:flex;gap:.75rem;align-items:center;padding:.65rem .75rem calc(.65rem + env(safe-area-inset-bottom));background:rgba(7,5,15,.94);border-top:1px solid var(--line)}
-.dock span{flex:1;min-width:0;color:var(--muted);font-size:.85rem}
-.dock .mint{flex:0 0 auto;min-width:7.5rem}
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:2;display:flex;padding:.65rem .75rem calc(.65rem + env(safe-area-inset-bottom));background:rgba(7,5,15,.94);border-top:1px solid var(--line)}
+.dock .cta{flex:1}
 @media(min-width:720px){
 body{padding-bottom:2rem}
 .wrap{width:min(100% - 2rem,56rem)}
@@ -67,8 +66,8 @@ body{padding-bottom:2rem}
 <p class="eyebrow">Robinhood Chain · SOFT7 · Supply 7</p>
 <h1>Reynard Soft7</h1>
 <p class="lede">Seven cards. Hold one and you are in the stake. Secondary sales pay holders a quarterly on-chain dividend.</p>
-<a class="mint" href="https://opensea.io/collection/reynard-soft7">Mint</a>
-<p class="hint">Primary mint is closed. Supply is 7. OpenSea is where a card changes hands.</p>
+<a class="cta" href="https://opensea.io/collection/reynard-soft7">Open the collection</a>
+<p class="hint">Supply is 7. Tap a card to open that token.</p>
 <ul class="links">
 <li><a href="#the-seven">The seven</a></li>
 <li><a href="#staking">Staking</a></li>
@@ -80,13 +79,13 @@ body{padding-bottom:2rem}
 <section id="the-seven" aria-labelledby="cards-title">
 <h2 id="cards-title">The seven</h2>
 <div class="grid">
-<figure><a href="https://opensea.io/assets/robinhood/0x73D7b2611509C14078e16f572bE5aC7D91879DC2/1"><img src="images/display/033.webp" width="480" height="720" alt="Reynard Soft7 #1, a fox in a purple robe and gold mask" loading="lazy" decoding="async"/><figcaption>#1 · Art 033</figcaption></a></figure>
-<figure><a href="https://opensea.io/assets/robinhood/0x73D7b2611509C14078e16f572bE5aC7D91879DC2/2"><img src="images/display/034.webp" width="480" height="720" alt="Reynard Soft7 #2" loading="lazy" decoding="async"/><figcaption>#2 · Art 034</figcaption></a></figure>
-<figure><a href="https://opensea.io/assets/robinhood/0x73D7b2611509C14078e16f572bE5aC7D91879DC2/3"><img src="images/display/035.webp" width="480" height="720" alt="Reynard Soft7 #3" loading="lazy" decoding="async"/><figcaption>#3 · Art 035</figcaption></a></figure>
-<figure><a href="https://opensea.io/assets/robinhood/0x73D7b2611509C14078e16f572bE5aC7D91879DC2/4"><img src="images/display/036.webp" width="480" height="720" alt="Reynard Soft7 #4" loading="lazy" decoding="async"/><figcaption>#4 · Art 036</figcaption></a></figure>
-<figure><a href="https://opensea.io/assets/robinhood/0x73D7b2611509C14078e16f572bE5aC7D91879DC2/5"><img src="images/display/037.webp" width="480" height="720" alt="Reynard Soft7 #5" loading="lazy" decoding="async"/><figcaption>#5 · Art 037</figcaption></a></figure>
-<figure><a href="https://opensea.io/assets/robinhood/0x73D7b2611509C14078e16f572bE5aC7D91879DC2/6"><img src="images/display/038.webp" width="480" height="720" alt="Reynard Soft7 #6" loading="lazy" decoding="async"/><figcaption>#6 · Art 038</figcaption></a></figure>
-<figure><a href="https://opensea.io/assets/robinhood/0x73D7b2611509C14078e16f572bE5aC7D91879DC2/7"><img src="images/display/039.webp" width="480" height="720" alt="Reynard Soft7 #7" loading="lazy" decoding="async"/><figcaption>#7 · Art 039</figcaption></a></figure>
+<figure><a href="https://opensea.io/assets/robinhood/0x73D7b2611509C14078e16f572bE5aC7D91879DC2/1"><img src="images/display/033.webp" width="480" height="720" alt="Reynard Soft7 #1, a fox in a purple robe and gold mask" loading="lazy" decoding="async"/><figcaption>Soft7 #1</figcaption></a></figure>
+<figure><a href="https://opensea.io/assets/robinhood/0x73D7b2611509C14078e16f572bE5aC7D91879DC2/2"><img src="images/display/034.webp" width="480" height="720" alt="Reynard Soft7 #2" loading="lazy" decoding="async"/><figcaption>Soft7 #2</figcaption></a></figure>
+<figure><a href="https://opensea.io/assets/robinhood/0x73D7b2611509C14078e16f572bE5aC7D91879DC2/3"><img src="images/display/035.webp" width="480" height="720" alt="Reynard Soft7 #3" loading="lazy" decoding="async"/><figcaption>Soft7 #3</figcaption></a></figure>
+<figure><a href="https://opensea.io/assets/robinhood/0x73D7b2611509C14078e16f572bE5aC7D91879DC2/4"><img src="images/display/036.webp" width="480" height="720" alt="Reynard Soft7 #4" loading="lazy" decoding="async"/><figcaption>Soft7 #4</figcaption></a></figure>
+<figure><a href="https://opensea.io/assets/robinhood/0x73D7b2611509C14078e16f572bE5aC7D91879DC2/5"><img src="images/display/037.webp" width="480" height="720" alt="Reynard Soft7 #5" loading="lazy" decoding="async"/><figcaption>Soft7 #5</figcaption></a></figure>
+<figure><a href="https://opensea.io/assets/robinhood/0x73D7b2611509C14078e16f572bE5aC7D91879DC2/6"><img src="images/display/038.webp" width="480" height="720" alt="Reynard Soft7 #6" loading="lazy" decoding="async"/><figcaption>Soft7 #6</figcaption></a></figure>
+<figure><a href="https://opensea.io/assets/robinhood/0x73D7b2611509C14078e16f572bE5aC7D91879DC2/7"><img src="images/display/039.webp" width="480" height="720" alt="Reynard Soft7 #7" loading="lazy" decoding="async"/><figcaption>Soft7 #7</figcaption></a></figure>
 </div>
 </section>
 <section class="below" id="staking" aria-labelledby="stake-title">
@@ -110,8 +109,7 @@ body{padding-bottom:2rem}
 <footer>Built on Robinhood Chain · not a Robinhood product</footer>
 </div>
 <div class="dock">
-<span>Supply 7 · collect on OpenSea</span>
-<a class="mint" href="https://opensea.io/collection/reynard-soft7">Mint</a>
+<a class="cta" href="https://opensea.io/collection/reynard-soft7">Open the collection</a>
 </div>
 </body>
 </html>
